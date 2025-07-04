@@ -1,4 +1,8 @@
-@import url('https://fonts://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+/* Importe Poppins também, se desejar manter a fonte do exemplo do acordeão.
+   Se não, o Roboto será usado, o que também é bom. */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap'); */
+
 
 :root {
     --cor-fundo: #121212;
@@ -7,6 +11,9 @@
     --cor-texto: #e0e0e0;
     --cor-texto-secundario: #a0a0a0;
     --cor-texto-escuro: #121212; /* Adicionado para texto da face2 */
+    /* Cores do acordeão do vídeo (adaptei para combinar um pouco mais) */
+    --accordion-bg: #412868; /* Fundo do accordion no vídeo, adaptei para sua cor */
+    --accordion-item-bg: #1e1e1e; /* Fundo padrão do item do accordion */
 }
 
 * {
@@ -20,7 +27,7 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif; /* Mantenha sua fonte padrão */
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
 }
@@ -121,7 +128,7 @@ header {
     }
 
     .nav-item {
-        margin: 2px;
+        margin: 10px 0; /* Ajustado para espaçamento vertical */
     }
 
     .menu-toggle {
@@ -153,6 +160,7 @@ header {
 
 .inicio-image img {
     max-width: 100%;
+    height: auto; /* Garante que a imagem seja responsiva */
 }
 
 .inicio-content {
@@ -195,19 +203,23 @@ header {
 
 
 /* ----- ESTILOS DA SEÇÃO HABILIDADES (REPLICANDO O VÍDEO DE REFERÊNCIA) ----- */
+
 .habilidades-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap; /* Alterado para wrap para quebrar linha em telas menores */
     gap: 40px;
-    padding-top: 250px; /* Altere para esta linha */
-    padding-bottom: 50px; /* Pode manter ou adicionar um padding inferior se quiser */
+    padding-top: 50px; /* Ajuste o padding superior */
+    padding-bottom: 50px;
 }
+
 /* Cor específica para o título "Minhas Habilidades" */
 .habilidades-titulo {
-    color: #7f5af0; /* Coloque aqui a cor que desejar! */
+    color: #7f5af0;
     padding-bottom: 10px; /* Adiciona um espaçamento inferior */
+    text-align: center; /* Centraliza o título */
+    width: 100%; /* Garante que o título ocupe a largura total */
 }
 
 .card {
@@ -222,7 +234,7 @@ header {
 
 .card:hover {
     box-shadow: 0 15px 30px rgba(127, 90, 240, 0.4);
-    overflow: visible;  /* Adicione esta linha */
+    overflow: visible; /* Adicione esta linha */
     z-index: 10;        /* Adicione esta linha */
 }
 .card .face {
@@ -259,6 +271,17 @@ header {
     color: var(--cor-texto);
     margin-bottom: 10px;
     transition: color 0.5s;
+}
+
+.card .face.face1 .content img {
+    max-width: 80px; /* Tamanho para ícones SVG */
+    height: auto;
+    margin-bottom: 10px;
+    transition: transform 0.5s;
+}
+
+.card:hover .face.face1 .content img {
+    transform: scale(1.1);
 }
 
 .card .face.face1 .content h3 {
@@ -316,6 +339,7 @@ header {
     transition: 0.3s;
 }
 
+
 .card .face.face2 .content a:hover {
     background: var(--cor-destaque);
     color: #fff;
@@ -337,6 +361,10 @@ header {
         font-size: 3.5rem;
     }
 
+    .card .face.face1 .content img {
+        max-width: 70px;
+    }
+
     .card .face.face1 .content h3 {
         font-size: 1.3rem;
     }
@@ -346,46 +374,28 @@ header {
     }
 }
 
-/* --- ESTILOS DO PORTFÓLIO --- */
+/* --- ESTILOS DO PORTFÓLIO (AGORA COMO ACORDEÃO) --- */
 #portfolio {
-    background-color: var(--cor-primaria);
+    background-color: var(--cor-fundo); /* Mudado para cor-fundo para o acordeão */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Garante que a seção tenha altura suficiente */
+    min-height: 100vh;
 }
 
-.portfolio-card {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    height: 300px;
-}
-
-.portfolio-card img {
+.accordion {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+    display: flex;
+    justify-content: center;
+    height: 400px; /* Ajuste conforme a altura que você deseja para os itens */
+    gap: 16px; /* Espaço entre os itens */
+    transition: 0.3s;
+    list-style: none; /* Remover marcadores de lista */
+    padding: 0; /* Remover padding padrão da lista */
+    max-width: 1200px; /* Limite a largura para melhor visualização */
 }
 
-.portfolio-card:hover img {
-    transform: scale(1.1);
-}
-
-.portfolio-card-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    color: #fff;
-    padding: 2rem 1.5rem 1.5rem;
-}
-
-/* Estilos do accordion */
 .accordion-item {
     position: relative;
     overflow: hidden;
@@ -418,20 +428,21 @@ header {
     z-index: 1;
     color: #fff;
     padding: 15px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 10%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%); /* Cor de fundo mais escura */
     opacity: 0; /* Conteúdo oculto inicialmente */
     visibility: hidden; /* Oculta o conteúdo completamente */
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     display: flex; /* Para centralizar o span de conteúdo */
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Organiza os itens verticalmente */
+    justify-content: flex-end; /* Alinha o conteúdo ao final da div */
+    align-items: center; /* Centraliza horizontalmente */
+    text-align: center;
+    padding-bottom: 25px; /* Mais espaço para o botão e texto */
 }
 
 .accordion-item .content span {
-    position: absolute;
-    bottom: 50px; /* Ajuste para posicionar acima do botão "Veja Mais" */
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.85); /* Escala menor inicialmente */
+    position: relative; /* Mudado para relative para o botão ficar dentro */
+    transform: scale(0.85); /* Escala menor inicialmente */
     visibility: hidden;
     opacity: 0;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -439,25 +450,33 @@ header {
     width: 100%; /* Garante que o span ocupe a largura do pai */
     padding: 0 20px; /* Adiciona um padding horizontal */
     box-sizing: border-box; /* Inclui padding na largura total */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaço entre os elementos dentro do span */
 }
 
 .accordion-item .content h2 {
     font-weight: 400;
     font-size: 24px;
-    line-height: 45px;
+    line-height: 1.2em; /* Ajuste o line-height para texto em várias linhas */
     border-bottom: 2px solid #fff;
+    padding-bottom: 5px; /* Espaço entre texto e linha */
     margin-bottom: 10px;
-    white-space: nowrap;
-    overflow: hidden; /* Para garantir que o texto não "quebre" */
-    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+    white-space: normal; /* Permite que o texto quebre linha */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; /* Garante que não ultrapasse a largura do pai */
 }
 
 .accordion-item .content p {
     font-size: 16px;
     margin-bottom: 15px; /* Espaço entre as tags e o botão */
-    white-space: nowrap;
+    white-space: normal; /* Permite que o texto quebre linha */
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 /* Estado de Hover */
@@ -485,15 +504,8 @@ header {
 .accordion-item:hover .content span {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, -50%) scale(1); /* Volta à escala normal */
+    transform: scale(1); /* Volta à escala normal */
 }
-
-.accordion-item:hover .btn-more-details {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
 
 /* Estilos para o botão "Veja Mais" */
 .btn-more-details {
@@ -507,21 +519,19 @@ header {
     transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
     opacity: 0; /* Oculto inicialmente */
     visibility: hidden;
-    position: absolute; /* Posiciona o botão de forma absoluta dentro do span */
-    bottom: -40px; /* Ajuste a posição inicial, fora da vista */
-    left: 50%;
-    transform: translateX(-50%); /* Centraliza o botão */
+    /* Remover position: absolute; se o pai for display: flex e flex-direction: column */
+    /* Ajustado para ficar dentro do fluxo do span com flexbox */
 }
 
 .accordion-item:hover .btn-more-details {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(-50px); /* Move para cima ao expandir */
+    /* transform: translateY(0); */ /* Remover esta linha se usando flexbox no span */
 }
 
 .btn-more-details:hover {
     background-color: #6a44d3;
-    transform: translateX(-50%) translateY(-55px) scale(1.05); /* Um pouco mais de zoom no hover */
+    transform: scale(1.05); /* Mantido para um pequeno zoom local no botão */
 }
 
 
@@ -550,17 +560,23 @@ header {
         flex: 0 0 auto; /* Ao passar o mouse no UL, os itens não voltam ao 80px fixos */
     }
 
+    .accordion-item .content {
+        padding-bottom: 20px; /* Reduz padding em mobile */
+    }
+
     .accordion-item .content span {
-        bottom: 20px; /* Ajuste a posição do span em mobile */
+        /* bottom: 20px; */ /* Pode ser removido se usando flexbox */
+        transform: scale(1); /* Mantém escala normal em mobile */
+        position: relative; /* Mantenha para o botão */
     }
 
     .btn-more-details {
-        bottom: 10px; /* Ajuste para mobile */
-        transform: translateX(-50%); /* Remove o translateY inicial em mobile */
+        /* bottom: 10px; */ /* Pode ser removido se usando flexbox */
+        transform: none; /* Remove transform X para mobile */
     }
 
     .accordion-item:hover .btn-more-details {
-        transform: translateX(-50%) translateY(0); /* Remove o efeito de deslizar para cima no hover em mobile */
+        transform: none; /* Remove o efeito de deslizar para cima no hover em mobile */
     }
 }
 
@@ -601,8 +617,7 @@ header {
     }
 }
 
-
-/* Estilos do Modal */
+/* --- ESTILOS DO MODAL --- */
 .modal-container {
     position: fixed;
     top: 0;

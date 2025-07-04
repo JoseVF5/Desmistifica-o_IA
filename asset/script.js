@@ -1,26 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- INICIALIZAÇÃO DO CARROSSEL SWIPER ---
-    const swiper = new Swiper('.portfolio-container', {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 30,
-        breakpoints: {
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
+    // --- REMOÇÃO E AJUSTE DO CARROSSEL SWIPER ---
+    // A inicialização do Swiper foi removida, pois não é mais necessária.
+    // O elemento .portfolio-container no HTML foi substituído por .accordion.
 
-    // --- LÓGICA DO MODAL DO PORTFÓLIO ---
-    const portfolioCards = document.querySelectorAll('.portfolio-card');
+    // --- LÓGICA DO MODAL DO PORTFÓLIO (AJUSTADA) ---
+    // Agora o modal será acionado pelo novo botão "Veja Mais"
+    const portfolioItems = document.querySelectorAll('.accordion-item'); // Seleciona os novos itens do acordeão
     const modal = document.getElementById('portfolio-modal');
     const closeModalBtn = document.querySelector('.modal-close-btn');
     const modalImage = document.getElementById('modal-image');
@@ -29,29 +15,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalDescription = document.getElementById('modal-description');
     const modalLink = document.getElementById('modal-link');
 
-    portfolioCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const title = card.dataset.title;
-            const tags = card.dataset.tags.split(',');
-            const description = card.dataset.description;
-            const link = card.dataset.link;
-            const image = card.dataset.image;
+    portfolioItems.forEach(item => { // Itera sobre os accordion-items
+        const seeMoreBtn = item.querySelector('.btn-more-details'); // Seleciona o botão dentro de cada item
 
-            modalTitle.textContent = title;
-            modalDescription.textContent = description;
-            modalLink.href = link;
-            modalImage.src = image;
-            
-            modalTags.innerHTML = '';
-            tags.forEach(tagText => {
-                const tagElement = document.createElement('span');
-                tagElement.classList.add('tag');
-                tagElement.textContent = tagText;
-                modalTags.appendChild(tagElement);
+        if (seeMoreBtn) {
+            seeMoreBtn.addEventListener('click', (event) => {
+                event.stopPropagation(); // Impede que o clique no botão feche imediatamente o modal ou propague para o item pai
+
+                const title = item.dataset.title;
+                const tags = item.dataset.tags.split(',');
+                const description = item.dataset.description;
+                const link = item.dataset.link;
+                const image = item.dataset.image;
+
+                modalTitle.textContent = title;
+                modalDescription.textContent = description;
+                modalLink.href = link;
+                modalImage.src = image;
+
+                modalTags.innerHTML = '';
+                tags.forEach(tagText => {
+                    const tagElement = document.createElement('span');
+                    tagElement.classList.add('tag');
+                    tagElement.textContent = tagText.trim(); // Adiciona .trim() para remover espaços em branco extras
+                    modalTags.appendChild(tagElement);
+                });
+
+                modal.classList.add('active');
             });
-            
-            modal.classList.add('active');
-        });
+        }
     });
 
     const closeModal = () => {
@@ -86,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA PARA O MENU HAMBURGUER (ADICIONADO) ---
+    // --- LÓGICA PARA O MENU HAMBURGUER (MANTIDA) ---
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
 
