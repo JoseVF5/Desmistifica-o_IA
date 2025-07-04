@@ -48,8 +48,6 @@ header {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
     color: var(--cor-destaque);
     text-decoration: none;
 }
@@ -123,7 +121,7 @@ header {
     }
 
     .nav-item {
-        margin: 10px 0;
+        margin: 2px;
     }
 
     .menu-toggle {
@@ -155,8 +153,6 @@ header {
 
 .inicio-image img {
     max-width: 100%;
-    border-radius: 15px;
-    border: 2px solid var(--cor-destaque);
 }
 
 .inicio-content {
@@ -203,7 +199,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 40px;
     padding-top: 250px; /* Altere para esta linha */
     padding-bottom: 50px; /* Pode manter ou adicionar um padding inferior se quiser */
