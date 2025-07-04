@@ -1,7 +1,5 @@
-/* Importando uma fonte do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-/* ----- VARIÁVEIS DE COR E CONFIGURAÇÕES GERAIS ----- */
 :root {
     --cor-fundo: #121212;
     --cor-primaria: #1e1e1e;
@@ -10,7 +8,6 @@
     --cor-texto-secundario: #a0a0a0;
 }
 
-/* Reset Básico e Estilos Globais */
 * {
     margin: 0;
     padding: 0;
@@ -30,10 +27,15 @@ body {
 section {
     padding: 100px 8%;
     min-height: 100vh;
-    overflow: hidden; /* Evita barras de rolagem indesejadas pela animação */
+    overflow: hidden;
 }
 
-/* ----- ESTILOS DO CABEÇALHO ----- */
+header, .navbar, .logo, .nav-menu, .nav-link, .nav-link:hover {
+    /* Estilos do cabeçalho ... (sem alteração) */
+}
+#inicio, .inicio-container, .inicio-image, .inicio-content, .btn-destaque, .btn-destaque:hover {
+    /* Estilos da seção Início ... (sem alteração) */
+}
 header {
     position: fixed;
     top: 0;
@@ -43,87 +45,71 @@ header {
     backdrop-filter: blur(10px);
     z-index: 1000;
 }
-
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 8%;
 }
-
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--cor-destaque);
     text-decoration: none;
 }
-
 .nav-menu {
     list-style: none;
     display: flex;
     gap: 2rem;
 }
-
 .nav-link {
     color: var(--cor-texto);
     text-decoration: none;
     transition: color 0.3s ease;
 }
-
 .nav-link:hover {
     color: var(--cor-destaque);
 }
-
-/* ----- ESTILOS DA SEÇÃO INÍCIO ----- */
 #inicio {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 4rem;
 }
-
 .inicio-container {
     display: flex;
     align-items: center;
     gap: 3rem;
 }
-
 .inicio-container.reverse {
     flex-direction: row-reverse;
 }
-
 .inicio-image {
     flex: 1;
 }
-
 .inicio-image img {
     max-width: 100%;
     border-radius: 15px;
     border: 2px solid var(--cor-destaque);
 }
-
 .inicio-content {
     flex: 1.5;
 }
-
 .inicio-content h1 {
     font-size: 3rem;
     color: #fff;
 }
-
 .inicio-content h2 {
     font-size: 1.5rem;
     color: var(--cor-destaque);
     margin-bottom: 1rem;
 }
-
 .inicio-content p {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 2rem;
     color: var(--cor-texto);
 }
-
 .btn-destaque {
     background-color: var(--cor-destaque);
     color: #fff;
@@ -132,15 +118,14 @@ header {
     border-radius: 5px;
     font-weight: bold;
     transition: transform 0.3s ease, background-color 0.3s ease;
-    display: inline-block; /* Garante que o botão se comporte corretamente */
+    display: inline-block;
 }
-
 .btn-destaque:hover {
     background-color: #6a44d3;
     transform: scale(1.05);
 }
 
-/* ----- ESTILOS DA SEÇÃO HABILIDADES ----- */
+/* ----- ESTILOS DA SEÇÃO HABILIDADES (NOVOS ESTILOS) ----- */
 .section-title {
     text-align: center;
     font-size: 2.5rem;
@@ -149,62 +134,119 @@ header {
 }
 
 .habilidades-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
-.skill-card {
+.card {
+    position: relative;
+    width: 300px;
+    height: 250px;
+    background-color: var(--cor-primaria);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.card .face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+.card .face.face1 {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(100px); /* Começa um pouco para baixo */
     background-color: var(--cor-primaria);
     border: 1px solid #333;
-    border-radius: 10px;
-    padding: 2rem;
-    cursor: pointer;
-    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.skill-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--cor-destaque);
+.card:hover .face.face1 {
+    transform: translateY(0); /* Sobe para a posição 0 */
+    background-color: var(--cor-destaque); /* Muda a cor no hover */
 }
 
-.skill-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+.card .face.face1 .content {
+    opacity: 0.5;
+    transition: 0.5s;
+    text-align: center;
 }
 
-.skill-icon {
-    font-size: 2.5rem;
-    color: var(--cor-destaque);
+.card:hover .face.face1 .content {
+    opacity: 1;
 }
 
-.skill-card h3 {
+.card .face.face1 .content .skill-icon {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.card .face.face1 .content h3 {
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
     font-size: 1.5rem;
 }
 
-.skill-description {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-out;
+.card .face.face2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translateY(-100px); /* Começa escondida para cima */
 }
 
-.skill-card.active .skill-description {
-    max-height: 200px;
-    margin-top: 1rem;
+.card:hover .face.face2 {
+    transform: translateY(0); /* Desliza para a posição 0 */
 }
 
-/* ----- ESTILOS DA SEÇÃO PORTFÓLIO ----- */
+.card .face.face2 .content p {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+.card .face.face2 .content a {
+    margin: 15px 0 0;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    color: var(--cor-destaque);
+    padding: 5px;
+    border: 1px solid var(--cor-destaque);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.card .face.face2 .content a:hover {
+    background: var(--cor-destaque);
+    color: #fff;
+}
+
+/* Estilos de outras seções... */
+#portfolio, .portfolio-container, .portfolio-card, #contato, .contact-form, footer {
+    /* Estilos das seções Portfólio, Contato e Rodapé... (sem alteração) */
+}
 #portfolio {
     background-color: var(--cor-primaria);
 }
-
 .portfolio-container {
     width: 100%;
     padding: 2rem 0;
 }
-
 .portfolio-card {
     position: relative;
     border-radius: 10px;
@@ -212,18 +254,15 @@ header {
     cursor: pointer;
     height: 300px;
 }
-
 .portfolio-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
 }
-
 .portfolio-card:hover img {
     transform: scale(1.1);
 }
-
 .portfolio-card-info {
     position: absolute;
     bottom: 0;
@@ -233,16 +272,15 @@ header {
     color: #fff;
     padding: 2rem 1.5rem 1.5rem;
 }
-
 .swiper-button-next, .swiper-button-prev {
     color: var(--cor-destaque) !important;
 }
-
 .swiper-pagination-bullet-active {
     background-color: var(--cor-destaque) !important;
 }
-
-/* ----- ESTILOS DO MODAL ----- */
+.modal-container, .modal-content, .modal-close-btn {
+    /* Estilos do modal ... (sem alteração) */
+}
 .modal-container {
     position: fixed;
     top: 0;
@@ -256,11 +294,9 @@ header {
     align-items: center;
     padding: 2rem;
 }
-
 .modal-container.active {
     display: flex;
 }
-
 .modal-content {
     background-color: var(--cor-fundo);
     padding: 2.5rem;
@@ -271,12 +307,10 @@ header {
     position: relative;
     animation: fadeIn 0.4s ease;
 }
-
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
-
 .modal-close-btn {
     position: absolute;
     top: 15px;
@@ -286,11 +320,9 @@ header {
     cursor: pointer;
     transition: color 0.3s ease;
 }
-
 .modal-close-btn:hover {
     color: #fff;
 }
-
 #modal-image {
     width: 100%;
     height: 300px;
@@ -298,20 +330,17 @@ header {
     border-radius: 5px;
     margin-bottom: 1.5rem;
 }
-
 #modal-title {
     font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--cor-destaque);
 }
-
 .tags-container {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
 }
-
 .tag {
     background-color: var(--cor-primaria);
     color: var(--cor-texto-secundario);
@@ -319,13 +348,10 @@ header {
     border-radius: 5px;
     font-size: 0.9rem;
 }
-
 #modal-description {
     line-height: 1.7;
     margin-bottom: 2rem;
 }
-
-/* ----- ESTILOS DA SEÇÃO CONTATO ----- */
 #contato {
     display: flex;
     flex-direction: column;
@@ -333,31 +359,26 @@ header {
     justify-content: center;
     text-align: center;
 }
-
 .section-subtitle {
     max-width: 600px;
     margin-bottom: 3rem;
     color: var(--cor-texto-secundario);
     line-height: 1.6;
 }
-
 .contact-form {
     width: 100%;
     max-width: 700px;
 }
-
 .form-group {
     margin-bottom: 1.5rem;
     text-align: left;
 }
-
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
     color: var(--cor-texto);
 }
-
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -369,14 +390,12 @@ header {
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
-
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--cor-destaque);
     box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.2);
 }
-
 .contact-form button {
     width: 100%;
     padding: 15px;
@@ -384,8 +403,6 @@ header {
     border: none;
     cursor: pointer;
 }
-
-/* ----- ESTILOS DO RODAPÉ ----- */
 footer {
     display: flex;
     justify-content: space-between;
@@ -394,31 +411,24 @@ footer {
     background-color: var(--cor-primaria);
     border-top: 1px solid var(--cor-destaque);
 }
-
 .footer-copyright p {
     font-size: 0.9rem;
     color: var(--cor-texto-secundario);
 }
-
 .footer-social a {
     color: var(--cor-texto);
     font-size: 1.5rem;
     margin-left: 1.5rem;
     transition: color 0.3s ease;
 }
-
 .footer-social a:hover {
     color: var(--cor-destaque);
 }
-
-
-/* ----- ESTILOS DA ANIMAÇÃO DE SCROLL (NOVO) ----- */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
