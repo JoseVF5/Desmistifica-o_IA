@@ -349,11 +349,11 @@ header {
 /* --- ESTILOS DO PORTFÓLIO --- */
 #portfolio {
     background-color: var(--cor-primaria);
-}
-
-.portfolio-container {
-    width: 100%;
-    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Garante que a seção tenha altura suficiente */
 }
 
 .portfolio-card {
@@ -385,13 +385,222 @@ header {
     padding: 2rem 1.5rem 1.5rem;
 }
 
-.swiper-button-next, .swiper-button-prev {
-    color: var(--cor-destaque) !important;
+/* Estilos do accordion */
+.accordion-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50px; /* Borda arredondada */
+    flex: 0 0 80px; /* Largura inicial do item "fechado" */
+    opacity: 0.75;
+    cursor: pointer;
+    transition: flex 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra semelhante à dos cards de habilidades */
 }
 
-.swiper-pagination-bullet-active {
-    background-color: var(--cor-destaque) !important;
+.accordion-item img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.5); /* Efeito de cinza na imagem "fechada" */
+    transition: 0.5s;
 }
+
+.accordion-item .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    color: #fff;
+    padding: 15px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 10%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0; /* Conteúdo oculto inicialmente */
+    visibility: hidden; /* Oculta o conteúdo completamente */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    display: flex; /* Para centralizar o span de conteúdo */
+    justify-content: center;
+    align-items: center;
+}
+
+.accordion-item .content span {
+    position: absolute;
+    bottom: 50px; /* Ajuste para posicionar acima do botão "Veja Mais" */
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.85); /* Escala menor inicialmente */
+    visibility: hidden;
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    text-align: center;
+    width: 100%; /* Garante que o span ocupe a largura do pai */
+    padding: 0 20px; /* Adiciona um padding horizontal */
+    box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+.accordion-item .content h2 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 45px;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden; /* Para garantir que o texto não "quebre" */
+    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+}
+
+.accordion-item .content p {
+    font-size: 16px;
+    margin-bottom: 15px; /* Espaço entre as tags e o botão */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estado de Hover */
+.accordion:hover .accordion-item {
+    flex: 0 0 80px; /* Quando o UL é hover, todos os itens voltam ao tamanho padrão */
+    opacity: 0.75;
+}
+
+.accordion-item:hover {
+    flex: 0 1 400px; /* O item hover se expande para 400px */
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(1.02); /* Pequeno zoom no item ativo */
+}
+
+.accordion-item:hover img {
+    filter: grayscale(0); /* Remove o filtro de cinza */
+}
+
+.accordion-item:hover .content {
+    opacity: 1;
+    visibility: visible;
+}
+
+.accordion-item:hover .content span {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1); /* Volta à escala normal */
+}
+
+.accordion-item:hover .btn-more-details {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* Estilos para o botão "Veja Mais" */
+.btn-more-details {
+    background-color: var(--cor-destaque);
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0; /* Oculto inicialmente */
+    visibility: hidden;
+    position: absolute; /* Posiciona o botão de forma absoluta dentro do span */
+    bottom: -40px; /* Ajuste a posição inicial, fora da vista */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza o botão */
+}
+
+.accordion-item:hover .btn-more-details {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-50px); /* Move para cima ao expandir */
+}
+
+.btn-more-details:hover {
+    background-color: #6a44d3;
+    transform: translateX(-50%) translateY(-55px) scale(1.05); /* Um pouco mais de zoom no hover */
+}
+
+
+/* Media Queries para o acordeão em telas menores */
+@media (max-width: 1024px) {
+    .accordion {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        height: auto; /* Altura automática para se adaptar ao conteúdo */
+        gap: 10px;
+        padding-top: 20px; /* Ajuste o padding superior */
+    }
+
+    .accordion-item {
+        flex: 0 0 auto; /* Remove a largura inicial fixa */
+        width: 100%; /* Ocupa a largura total */
+        height: 200px; /* Altura padrão para itens não hover */
+        border-radius: 20px; /* Ajuste o arredondamento */
+    }
+
+    .accordion-item:hover {
+        flex: 0 0 auto; /* Mantém auto no hover */
+        height: 250px; /* Altura expandida no hover */
+    }
+
+    .accordion:hover .accordion-item {
+        flex: 0 0 auto; /* Ao passar o mouse no UL, os itens não voltam ao 80px fixos */
+    }
+
+    .accordion-item .content span {
+        bottom: 20px; /* Ajuste a posição do span em mobile */
+    }
+
+    .btn-more-details {
+        bottom: 10px; /* Ajuste para mobile */
+        transform: translateX(-50%); /* Remove o translateY inicial em mobile */
+    }
+
+    .accordion-item:hover .btn-more-details {
+        transform: translateX(-50%) translateY(0); /* Remove o efeito de deslizar para cima no hover em mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    .accordion-item {
+        height: 180px; /* Altura menor para telas muito pequenas */
+    }
+    .accordion-item:hover {
+        height: 220px;
+    }
+    .accordion-item .content h2 {
+        font-size: 20px;
+        line-height: 35px;
+    }
+    .accordion-item .content p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .accordion-item {
+        height: 150px;
+        border-radius: 15px;
+    }
+    .accordion-item:hover {
+        height: 200px;
+    }
+    .accordion-item .content h2 {
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .accordion-item .content p {
+        font-size: 12px;
+    }
+    .btn-more-details {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
 
 /* Estilos do Modal */
 .modal-container {
