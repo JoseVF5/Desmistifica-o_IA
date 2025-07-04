@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-/* Importe Poppins também, se desejar manter a fonte do exemplo do acordeão.
-   Se não, o Roboto será usado, o que também é bom. */
+/* Importe Poppins também, se desejar manter a fonte do exemplo do acordeão. */
+/* Se não, o Roboto será usado, o que também é bom. */
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap'); */
 
 
@@ -34,7 +34,11 @@ body {
 
 section {
     padding: 100px 8%;
-    min-height: 100vh;
+    min-height: 100vh; /* Garante que cada seção ocupe no mínimo 100% da altura da viewport */
+    display: flex; /* Adicionado para flexibilidade de layout */
+    flex-direction: column; /* Organiza o conteúdo em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
 }
 
 header {
@@ -138,6 +142,7 @@ header {
 
 
 #inicio {
+    /* Mantenha estas propriedades de layout */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -185,6 +190,19 @@ header {
     color: var(--cor-texto);
 }
 
+.inicio-content ul { /* Adicionado estilo para a lista na seção de início */
+    font-size: 1.1rem; 
+    line-height: 1.6;
+    color: var(--cor-texto);
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+.inicio-content ul li {
+    margin-bottom: 0.5rem;
+}
+
+
 .btn-destaque {
     background-color: var(--cor-destaque);
     color: #fff;
@@ -199,10 +217,6 @@ header {
 .btn-destaque:hover {
     background-color: #6a44d3;
     transform: scale(1.05);
-}
-
-ul {
-    font-size: 1.5em; 
 }
 
 
@@ -381,11 +395,7 @@ ul {
 /* --- ESTILOS DO PORTFÓLIO (AGORA COMO ACORDEÃO) --- */
 #portfolio {
     background-color: var(--cor-fundo); /* Mudado para cor-fundo para o acordeão */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    /* Mantido display: flex, flex-direction: column, align-items: center, justify-content: center do section geral */
 }
 
 .accordion {
@@ -403,23 +413,39 @@ ul {
 .accordion-item {
     position: relative;
     overflow: hidden;
-    border-radius: 50px; /* Borda arredondada */
-    flex: 0 0 80px; /* Largura inicial do item "fechado" */
+    border-radius: 50px;
+    flex: 0 0 80px;
     opacity: 0.75;
     cursor: pointer;
     transition: flex 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra semelhante à dos cards de habilidades */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1; /* Adicionado para ordenar as camadas */
 }
+
+/* Efeito de z-index ao hover para garantir que o item expandido esteja acima */
+.accordion-item:hover {
+    flex: 0 1 400px;
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(1.02);
+    overflow: visible; /* Adicionado para permitir expansão visual */
+    z-index: 10;       /* Adicionado para sobrepor outros itens */
+}
+
+.accordion-item:not(:hover) {
+    z-index: 1; /* Volta ao z-index normal quando não está em hover */
+    transition: flex 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out, z-index 0.01s ease 0.5s; /* Adicionado delay no z-index */
+}
+
 
 .accordion-item img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(0.5); /* Efeito de cinza na imagem "fechada" */
+    filter: grayscale(0.5) blur(2px); /* Efeito de cinza e leve desfoque na imagem "fechada" */
     transition: 0.5s;
 }
 
@@ -436,8 +462,8 @@ ul {
     opacity: 0; /* Conteúdo oculto inicialmente */
     visibility: hidden; /* Oculta o conteúdo completamente */
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    display: flex; /* Para centralizar o span de conteúdo */
-    flex-direction: column; /* Organiza os itens verticalmente */
+    display: flex;
+    flex-direction: column;
     justify-content: flex-end; /* Alinha o conteúdo ao final da div */
     align-items: center; /* Centraliza horizontalmente */
     text-align: center;
@@ -445,7 +471,7 @@ ul {
 }
 
 .accordion-item .content span {
-    position: relative; /* Mudado para relative para o botão ficar dentro */
+    position: relative; /* Mantido para o botão ficar dentro e ser posicionado */
     transform: scale(0.85); /* Escala menor inicialmente */
     visibility: hidden;
     opacity: 0;
@@ -468,36 +494,32 @@ ul {
     border-bottom: 2px solid #fff;
     padding-bottom: 5px; /* Espaço entre texto e linha */
     margin-bottom: 10px;
-    white-space: normal; /* Permite que o texto quebre linha */
+    white-space: normal; /* PERMITE QUE O TEXTO QUEBRE LINHA */
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; /* Para adicionar '...' se o texto for muito longo e quebrar linha */
     max-width: 100%; /* Garante que não ultrapasse a largura do pai */
 }
 
 .accordion-item .content p {
     font-size: 16px;
     margin-bottom: 15px; /* Espaço entre as tags e o botão */
-    white-space: normal; /* Permite que o texto quebre linha */
+    white-space: normal; /* PERMITE QUE O TEXTO QUEBRE LINHA */
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; /* Para adicionar '...' se o texto for muito longo e quebrar linha */
     max-width: 100%;
 }
 
-/* Estado de Hover */
-.accordion:hover .accordion-item {
-    flex: 0 0 80px; /* Quando o UL é hover, todos os itens voltam ao tamanho padrão */
-    opacity: 0.75;
-}
 
+/* O item específico que está em hover se expande */
 .accordion-item:hover {
-    flex: 0 1 400px; /* O item hover se expande para 400px */
+    flex: 0 1 400px; /* O item hover se expande para 400px (largura desejada) */
     opacity: 1;
     cursor: pointer;
     transform: scale(1.02); /* Pequeno zoom no item ativo */
 }
 
 .accordion-item:hover img {
-    filter: grayscale(0); /* Remove o filtro de cinza */
+    filter: grayscale(0) blur(0); /* Remove o filtro de cinza e o desfoque */
 }
 
 .accordion-item:hover .content {
@@ -523,14 +545,11 @@ ul {
     transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
     opacity: 0; /* Oculto inicialmente */
     visibility: hidden;
-    /* Remover position: absolute; se o pai for display: flex e flex-direction: column */
-    /* Ajustado para ficar dentro do fluxo do span com flexbox */
 }
 
 .accordion-item:hover .btn-more-details {
     opacity: 1;
     visibility: visible;
-    /* transform: translateY(0); */ /* Remover esta linha se usando flexbox no span */
 }
 
 .btn-more-details:hover {
@@ -569,13 +588,11 @@ ul {
     }
 
     .accordion-item .content span {
-        /* bottom: 20px; */ /* Pode ser removido se usando flexbox */
         transform: scale(1); /* Mantém escala normal em mobile */
         position: relative; /* Mantenha para o botão */
     }
 
     .btn-more-details {
-        /* bottom: 10px; */ /* Pode ser removido se usando flexbox */
         transform: none; /* Remove transform X para mobile */
     }
 
