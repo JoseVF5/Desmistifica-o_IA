@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nome do Seu Amigo | Data Engineer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <img src="/asset/img/LOGO JV_White Horizontal.svg" alt="logo" class="logo" height="90px">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#inicio" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="#habilidades" class="nav-link">Habilidades</a></li>
+                <li class="nav-item"><a href="#portfolio" class="nav-link">Portfólio</a></li>
+                <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
+            <section id="inicio">
+    <div class="inicio-container">
+        <div class="inicio-image">
+            <img src="/asset/img/IMG_2412.png" alt="Foto de José Vitor" class="foto-amigo" width="500px">
+        </div>
+        <div class="inicio-content">
+            <h1>Olá, eu sou [Nome do Amigo]</h1>
+            <h2>Mas quem eu sou?</h2>
+            <p>
+                Me chamo José Victor e atualmente sou engenheiro de dados Junior. Faço faculdade de engenharia de Software e, no momento, me encontro no último ano da graduação. Meu foco principal é alcançar o doutorado com tema relacionado a big data.
+                Tenho trabalho para manter o foco total em criação de projetos que recebam fluxos de dados brutos e através disso montar pipelines. Tenho muito interesse também por algoritmos e estruturas de dados.
+            </p>
+            <a href="#portfolio" class="btn-destaque">Meus Projetos</a>
+        </div>
+    </div>
+
+    <div class="inicio-container reverse">
+        <div class="inicio-image">
+             <img src=" " alt="Ambiente de trabalho ou outra foto">
+        </div>
+        <div class="inicio-content">
+            <h2>E porquê Engenharia de dados?</h2>
+            <p>
+                ● Tenho interesse nos bastidores da tecnologia e em como os dados fluem nos sistemas.
+                ● Prefiro construir as estruturas que sustentam a informação do que apenas consumi-la.
+                ● Me interesso por infraestrutura, algoritmos e fluxos de dados em larga escala.
+                ● Essa complexidade técnica é exatamente o que me motiva a seguir nessa área.
+                ● Não quero trabalhar só com a ponta visível, mas dominar todo o fluxo.
+                ● O que realmente me prende é a lógica por trás, o funcionamento interno das coisas.
+                ● É ali que estão os desafios reais: lidar com falhas, limpar dados sujos, montar rotinas sólidas.
+                ● Estou em formação acadêmica e busco um doutorado em Big Data.
+            </p>
+        </div>
+    </div>
+</section>
+            </section>
+
+ <section id="habilidades">
+    <h2 class="section-title">Minhas Habilidades</h2>
+    <div class="habilidades-container">
+
+        <div class="skill-card">
+            <div class="skill-header">
+                <i class="fab fa-python skill-icon"></i>
+                <h3>Python</h3>
+            </div>
+            <div class="skill-description">
+                <p>Linguagem principal para scripting, automação de ETL, análise de dados (com Pandas) e desenvolvimento de APIs para serviços de dados.</p>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-header">
+                <i class="fas fa-database skill-icon"></i>
+                <h3>SQL</h3>
+            </div>
+            <div class="skill-description">
+                <p>Domínio em consultas complexas, otimização de queries e modelagem de dados em bancos relacionais como PostgreSQL e MySQL.</p>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-header">
+                <i class="fab fa-java skill-icon"></i>
+                <h3>Java</h3>
+            </div>
+            <div class="skill-description">
+                <p>Experiência em desenvolvimento de aplicações robustas e de alta performance para processamento de grandes volumes de dados, utilizando frameworks como Spring.</p>
+            </div>
+        </div>
+
+        </div>
+</section>
+
+<section id="portfolio">
+    <h2 class="section-title">Meus Projetos</h2>
+    
+    <div class="swiper portfolio-container">
+        <div class="swiper-wrapper">
+            
+            <div class="swiper-slide portfolio-card" 
+                 data-title="Análise de Vendas de E-commerce"
+                 data-tags="Python,Pandas,SQL,Power BI"
+                 data-description="Um pipeline completo que coleta dados de vendas de um banco de dados SQL, processa com Python e Pandas para limpeza e transformação, e carrega em um data warehouse para visualização em dashboards interativos no Power BI."
+                 data-link="https://github.com/seu-usuario/projeto-1"
+                 data-image="https://via.placeholder.com/500x300/7F5AF0/FFFFFF?text=Projeto+1">
+                <img src="https://via.placeholder.com/500x300/7F5AF0/FFFFFF?text=Projeto+1" alt="Projeto 1">
+                <div class="portfolio-card-info">
+                    <h3>Análise de Vendas</h3>
+                </div>
+            </div>
+
+            <div class="swiper-slide portfolio-card"
+                 data-title="Sistema de Recomendação de Músicas"
+                 data-tags="Spark,Scala,AWS S3,Machine Learning"
+                 data-description="Desenvolvimento de um sistema de recomendação em tempo real usando Apache Spark e Scala. Os dados de interação do usuário são processados e um modelo de machine learning sugere novas músicas."
+                 data-link="https://github.com/seu-usuario/projeto-2"
+                 data-image="https://via.placeholder.com/500x300/16161A/FFFFFF?text=Projeto+2">
+                <img src="https://via.placeholder.com/500x300/16161A/FFFFFF?text=Projeto+2" alt="Projeto 2">
+                <div class="portfolio-card-info">
+                    <h3>Recomendação de Músicas</h3>
+                </div>
+            </div>
+
+            </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<div id="portfolio-modal" class="modal-container">
+    <div class="modal-content">
+        <span class="modal-close-btn">&times;</span>
+        <img id="modal-image" src="" alt="Imagem do Projeto">
+        <h3 id="modal-title"></h3>
+        <div id="modal-tags" class="tags-container"></div>
+        <p id="modal-description"></p>
+        <a id="modal-link" href="#" target="_blank" class="btn-destaque">Ver no GitHub</a>
+         </div>
+        </div>
+</section>
+
+        <section id="contato">
+             <h2 class="section-title">Entre em contato</h2>
+              <p class="section-subtitle">
+                  Caso tenha interesse em trocar conhecimentos ou conversar sobre vagas, me mande uma mensagem abaixo.
+             </p>
+
+    <form action="https://formspree.io/f/mblybwpk" method="POST" class="contact-form">
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Telefone: (Opcional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX">
+        </div>
+        <div class="form-group">
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message" rows="6" placeholder="Digite sua mensagem aqui..." required></textarea>
+        </div>
+        
+        <button type="submit" class="btn-destaque">Enviar Mensagem</button>
+    </form>
+</section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="/asset/img/LOGO JV_White Icon.svg" alt="logo" class="logo" height="90px">
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2025 José Victor Data Engineer. Todos os direitos reservados. | Desenvolvido por <a href="https://amaronetto.netlify.app/">Amaro Netto</a></p>
+        </div>
+        <div class="footer-social">
+            <a href="https://github.com/usuario" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/usuario" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="/asset/script.js"></script>
+</body>
+</html>

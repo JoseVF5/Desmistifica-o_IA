@@ -1,0 +1,416 @@
+/* Importando uma fonte do Google Fonts (sugestão) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* ----- VARIÁVEIS DE COR E CONFIGURAÇÕES GERAIS ----- */
+:root {
+    --cor-fundo: #121212; /* Preto/Cinza bem escuro */
+    --cor-primaria: #1e1e1e; /* Um tom de cinza para os cards/seções */
+    --cor-destaque: #7f5af0; /* Um roxo/azul para links e detalhes */
+    --cor-texto: #e0e0e0; /* Cinza claro para textos */
+    --cor-texto-secundario: #a0a0a0; /* Cinza um pouco mais escuro */
+}
+
+/* Reset Básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave ao clicar nos links do menu */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+section {
+    padding: 100px 8%; /* Espaçamento interno para todas as seções */
+    min-height: 100vh; /* Cada seção ocupa pelo menos a altura inteira da tela */
+}
+
+/* ----- ESTILOS DO CABEÇALHO ----- */
+header {
+    position: fixed; /* Deixa o cabeçalho fixo no topo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(18, 18, 18, 0.8); /* Fundo com um pouco de transparência */
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco, super moderno! */
+    z-index: 1000; /* Garante que o cabeçalho fique sobre todo o conteúdo */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Espaça a logo e o menu */
+    align-items: center;
+    padding: 1rem 8%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-destaque);
+    text-decoration: none;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem; /* Espaçamento entre os itens do menu */
+}
+
+.nav-link {
+    color: var(--cor-texto);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--cor-destaque); /* Muda a cor ao passar o mouse */
+}
+
+
+/* ----- ESTILOS DO RODAPÉ ----- */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 8%;
+    background-color: var(--cor-primaria);
+    border-top: 1px solid var(--cor-destaque);
+}
+
+.footer-copyright p {
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+}
+
+.footer-social a {
+    color: var(--cor-texto);
+    font-size: 1.5rem;
+    margin-left: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--cor-destaque);
+}
+
+/* ----- ESTILOS DA SEÇÃO INÍCIO ----- */
+#inicio {
+    display: flex;
+    flex-direction: column; /* Organiza os dois blocos um abaixo do outro */
+    justify-content: center; /* Centraliza o conteúdo verticalmente na seção */
+    gap: 4rem; /* Espaço entre os dois blocos */
+}
+
+.inicio-container {
+    display: flex;
+    align-items: center; /* Alinha imagem e texto verticalmente */
+    gap: 3rem; /* Espaço entre a imagem e o texto */
+}
+
+/* Inverte a ordem para o segundo bloco */
+.inicio-container.reverse {
+    flex-direction: row-reverse;
+}
+
+.inicio-image {
+    flex: 1; /* Faz a imagem ocupar uma parte do espaço */
+}
+
+.inicio-image img {
+    max-width: 100%;
+    border-radius: 15px;
+    border: 2px solid var(--cor-destaque);
+}
+
+.inicio-content {
+    flex: 1.5; /* Faz o texto ocupar um pouco mais de espaço que a imagem */
+}
+
+.inicio-content h1 {
+    font-size: 3rem;
+    color: #fff;
+}
+
+.inicio-content h2 {
+    font-size: 1.5rem;
+    color: var(--cor-destaque);
+    margin-bottom: 1rem;
+}
+
+.inicio-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: var(--cor-texto);
+}
+
+.btn-destaque {
+    background-color: var(--cor-destaque);
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-destaque:hover {
+    background-color: #6a44d3; /* Um tom um pouco mais escuro do destaque */
+    transform: scale(1.05);
+}
+
+/* ----- ESTILOS DA SEÇÃO HABILIDADES ----- */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: #fff;
+}
+
+.habilidades-container {
+    display: grid;
+    /* Cria 3 colunas em telas grandes, 2 em médias e 1 em pequenas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; /* Espaço entre os cards */
+}
+
+.skill-card {
+    background-color: var(--cor-primaria);
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px); /* Efeito de flutuar ao passar o mouse */
+    border-color: var(--cor-destaque);
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    color: var(--cor-destaque);
+}
+
+.skill-card h3 {
+    font-size: 1.5rem;
+}
+
+/* A parte mais importante: a descrição escondida */
+.skill-description {
+    max-height: 0; /* Começa com altura zero, ou seja, escondido */
+    overflow: hidden; /* Garante que o conteúdo não vaze */
+    transition: max-height 0.5s ease-out; /* Animação suave de abertura/fechamento */
+}
+
+/* Quando o card tiver a classe 'active', a descrição aparece */
+.skill-card.active .skill-description {
+    max-height: 200px; /* Dê um valor de altura máxima suficiente para o texto */
+    margin-top: 1rem;
+}
+
+/* ----- ESTILOS DA SEÇÃO PORTFÓLIO ----- */
+#portfolio {
+    background-color: var(--cor-primaria);
+}
+
+.portfolio-container {
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.portfolio-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden; /* Garante que a imagem não saia do card */
+    cursor: pointer;
+    height: 300px;
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir todo o espaço sem distorcer */
+    transition: transform 0.4s ease;
+}
+
+.portfolio-card:hover img {
+    transform: scale(1.1); /* Efeito de zoom na imagem */
+}
+
+.portfolio-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: #fff;
+    padding: 2rem 1.5rem 1.5rem;
+}
+
+/* Estilização das setas e paginação do Swiper */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--cor-destaque) !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--cor-destaque) !important;
+}
+
+/* ----- ESTILOS DO MODAL ----- */
+.modal-container {
+    position: fixed; /* Fica fixo sobre toda a página */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2000; /* Fica acima de tudo, até do header */
+    display: none; /* Começa escondido */
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Adicionaremos a classe 'active' via JS para mostrar o modal */
+.modal-container.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--cor-fundo);
+    padding: 2.5rem;
+    border-radius: 10px;
+    border-top: 5px solid var(--cor-destaque);
+    max-width: 700px;
+    width: 100%;
+    position: relative;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close-btn:hover {
+    color: #fff;
+}
+
+#modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+
+#modal-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--cor-destaque);
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-secundario);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+#modal-description {
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* ----- ESTILOS DA SEÇÃO CONTATO ----- */
+#contato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.section-subtitle {
+    max-width: 600px;
+    margin-bottom: 3rem;
+    color: var(--cor-texto-secundario);
+    line-height: 1.6;
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 700px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--cor-texto);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--cor-destaque);
+    box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.2); /* Sombra suave no foco */
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: none; /* O botão não precisa de borda */
+}
