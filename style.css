@@ -28,7 +28,6 @@ body {
 section {
     padding: 100px 8%;
     min-height: 100vh;
-    overflow: hidden;
 }
 
 header {
@@ -200,209 +199,150 @@ header {
 
 
 /* ----- ESTILOS DA SEÇÃO HABILIDADES (REPLICANDO O VÍDEO DE REFERÊNCIA) ----- */
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 4rem;
-    color: #fff;
-}
-
 .habilidades-container {
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Alinha os cards pela parte de baixo para que cresçam para cima */
+    align-items: center;
     flex-wrap: wrap;
     gap: 40px;
-    padding-top: 150px; /* Garante espaço suficiente para o card expandir para cima */
-    padding-bottom: 50px; 
+    padding-top: 250px; /* Altere para esta linha */
+    padding-bottom: 50px; /* Pode manter ou adicionar um padding inferior se quiser */
 }
-
 .card {
     position: relative;
-    width: 300px; 
-    height: 250px; /* Altura original do card */
-    border-radius: 10px;
+    width: 300px;
+    height: 250px;
     cursor: pointer;
-    overflow: hidden; /* ESSENCIAL para que as faces fiquem dentro do card */
-    /* background-color será definido pelas faces */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra inicial */
-    
-    /* Transição para altura, transformação e sombra */
-    transition: height 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease; 
+    overflow: hidden; /* Essencial para o efeito de deslizar */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.5s ease;
 }
 
 .card:hover {
-    height: 450px; /* NOVA ALTURA DO CARD NO HOVER (ex: 250px + 200px extras) */
-    transform: translateY(-20px); /* ELEVA O CARD INTEIRO NO HOVER */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* Sombra mais intensa ao elevar */
+    box-shadow: 0 15px 30px rgba(127, 90, 240, 0.4);
+    overflow: visible;  /* Adicione esta linha */
+    z-index: 10;        /* Adicione esta linha */
 }
-
-/* As faces terão o background-color definido individualmente */
-
 .card .face {
-    width: 100%;
     position: absolute;
+    top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px; /* Borda arredondada para cada face */
-    backface-visibility: hidden; 
-    
-    /* Transição para todas as propriedades relevantes */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, height 0.5s ease-in-out, top 0.5s ease-in-out, background-color 0.5s ease; 
-}
-
-.card .face.face1 {
-    z-index: 2; /* Face 1 por cima no estado normal */
-    height: 100%; /* Altura total no estado normal */
-    top: 0; /* Começa no topo do card */
-    background-color: var(--cor-primaria); /* Fundo da face1 no normal */
-    border: none; /* Remove a borda da face, a borda principal fica no .card */
-    transform: translateY(0); /* Posição inicial da face 1 */
-    opacity: 1; /* Visível no início */
-    padding: 20px; /* Padding para centralizar o conteúdo */
-}
-
-.card:hover .face.face1 {
-    height: 150px; /* Face 1 encolhe para 150px de altura (parte superior) */
-    transform: translateY(0); /* Permanece no topo do card */
-    opacity: 1; /* MANTÉM A FACE 1 VISÍVEL */
-    background-color: var(--cor-destaque); /* Fundo da face1 muda para a cor de destaque no hover */
-}
-
-.card .face.face1 .content {
     text-align: center;
-    display: flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%; 
+    backface-visibility: hidden; /* Melhora a performance da animação */
+    transition: transform 0.5s ease-in-out, background-color 0.5s ease;
+}
+
+/* Face 1: A camada de cima, que se move */
+.card .face.face1 {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto);
+    z-index: 2; /* Garante que esta face fique por cima */
+    transform: translateY(0);
+}
+
+
+/* Ação de Hover no Card: Move a Face 1 para cima */
+.card:hover .face.face1 {
+    transform: translateY(-100%);
+    background-color: var(--cor-destaque);
 }
 
 .card .face.face1 .content .skill-icon {
     font-size: 4rem;
     color: var(--cor-texto);
-    transition: 0.5s;
     margin-bottom: 10px;
-}
-
-.card:hover .face.face1 .content .skill-icon {
-    color: #fff; /* Ícone branco no hover */
+    transition: color 0.5s;
 }
 
 .card .face.face1 .content h3 {
-    margin: 0; 
+    margin: 0;
     padding: 0;
-    color: var(--cor-texto);
     font-size: 1.5rem;
-    transition: 0.5s;
+    color: var(--cor-texto);
+    transition: color 0.5s;
 }
 
+.card:hover .face.face1 .content .skill-icon,
 .card:hover .face.face1 .content h3 {
-    color: #fff; /* Título branco no hover */
+    color: #fff;
 }
 
+/* Face 2: A camada de baixo, que é revelada e permanece estática */
 .card .face.face2 {
-    z-index: 1; /* Face 2 por baixo da face 1 no estado normal */
-    height: 0; /* Começa com altura 0 no estado normal (invisível) */
-    top: 100%; /* Começa na parte inferior do card, fora de vista */
+    background-color: #fff;
+    color: var(--cor-texto-escuro);
+    z-index: 1; /* Fica atrás da Face 1 */
     padding: 20px;
-    box-sizing: border-box;
-    background-color: #fff; /* Fundo branco para a face 2 (como no vídeo) */
-    color: var(--cor-texto-escuro); /* Texto escuro na face 2 */
-    transform: translateY(0); /* Não usar transform: translateY para posicionamento inicial/final */
-    opacity: 0; /* Invisível no início */
-    align-items: flex-start; /* Alinha o conteúdo ao topo da face2 */
-    flex-direction: column; /* Conteúdo em coluna */
-}
-
-.card:hover .face.face2 {
-    height: 300px; /* Nova altura da face2 quando o card expande (450px - 150px = 300px) */
-    top: 150px; /* Posiciona a face2 logo abaixo da face1 (que agora tem 150px) */
-    opacity: 1; /* Torna-se visível */
-    z-index: 3; /* Coloca a face2 acima da face1 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* ESTA FACE NÃO POSSUI ANIMAÇÃO NO HOVER, POR ISSO FICA ESTÁTICA */
 }
 
 .card .face.face2 .content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Espaço entre parágrafo e link */
-    align-items: flex-start; /* Alinha o texto à esquerda */
+    justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
-    height: 100%; /* Ocupa toda a altura da face2 */
+    height: 100%;
 }
 
 .card .face.face2 .content p {
     margin: 0;
     padding: 0;
     font-size: 1rem;
-    color: var(--cor-texto-escuro); /* Texto da face2 escuro */
+    color: var(--cor-texto-escuro);
     line-height: 1.6;
 }
 
 .card .face.face2 .content a {
-    margin-top: auto; /* Empurra o link para o final da face2 */
+    margin-top: auto;
     display: inline-block;
     text-decoration: none;
     font-weight: 900;
-    color: var(--cor-destaque); 
+    color: var(--cor-destaque);
     padding: 5px 10px;
-    border: 1px solid var(--cor-destaque); 
+    border: 1px solid var(--cor-destaque);
     border-radius: 5px;
     transition: 0.3s;
 }
 
 .card .face.face2 .content a:hover {
     background: var(--cor-destaque);
-    color: #fff; 
+    color: #fff;
 }
 
 /* Media Queries para a seção de Habilidades */
 @media (max-width: 768px) {
     .habilidades-container {
-        gap: 30px; 
-        padding-top: 120px; /* Ajuste para mobile */
+        gap: 30px;
+        padding-top: 0;
     }
 
     .card {
-        width: 280px; 
-        height: 230px; /* Altura original menor */
-    }
-    .card:hover {
-        height: 400px; /* Nova altura ajustada para mobile (ex: 230px + 170px extras) */
-    }
-
-    .card .face.face1 {
-        height: 100%; /* Mantém 100% no normal */
-    }
-    .card:hover .face.face1 {
-        height: 130px; /* Altura da face1 em mobile (para 400px de card) */
-    }
-
-    .card .face.face2 {
-        height: 0; /* Começa com altura 0 */
-        top: 100%; /* Fora de vista */
-    }
-    .card:hover .face.face2 {
-        height: 270px; /* Nova altura da face2 em mobile (400px - 130px) */
-        top: 130px; /* Posicionada logo abaixo da face1 */
+        width: 280px;
+        height: 230px;
     }
 
     .card .face.face1 .content .skill-icon {
-        font-size: 3.5rem; 
+        font-size: 3.5rem;
     }
 
     .card .face.face1 .content h3 {
-        font-size: 1.3rem; 
+        font-size: 1.3rem;
     }
 
     .card .face.face2 .content p {
-        font-size: 0.9rem; 
+        font-size: 0.9rem;
     }
 }
-
 
 /* --- ESTILOS DO PORTFÓLIO --- */
 #portfolio {
