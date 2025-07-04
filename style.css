@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 :root {
     --cor-fundo: #121212;
@@ -6,6 +6,7 @@
     --cor-destaque: #7f5af0;
     --cor-texto: #e0e0e0;
     --cor-texto-secundario: #a0a0a0;
+    --cor-texto-escuro: #121212; /* Adicionado para texto da face2 */
 }
 
 * {
@@ -29,7 +30,7 @@ section {
     min-height: 100vh;
     overflow: hidden;
 }
-/* ... (Estilos do header, início, etc. - sem alteração) ... */
+
 header {
     position: fixed;
     top: 0;
@@ -39,71 +40,148 @@ header {
     backdrop-filter: blur(10px);
     z-index: 1000;
 }
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 8%;
 }
+
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--cor-destaque);
     text-decoration: none;
 }
+
 .nav-menu {
     list-style: none;
     display: flex;
     gap: 2rem;
 }
+
+.nav-item {
+    position: relative; 
+}
+
 .nav-link {
     color: var(--cor-texto);
     text-decoration: none;
     transition: color 0.3s ease;
+    padding-bottom: 5px; 
 }
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-destaque);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
 .nav-link:hover {
     color: var(--cor-destaque);
 }
+
+.menu-toggle {
+    display: none; 
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--cor-texto);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(18, 18, 18, 0.95);
+        position: absolute;
+        top: 60px; 
+        left: 0;
+        padding: 1rem 0;
+        align-items: center;
+        border-top: 1px solid rgba(127, 90, 240, 0.3);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex; 
+    }
+}
+
+
 #inicio {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 4rem;
 }
+
 .inicio-container {
     display: flex;
     align-items: center;
     gap: 3rem;
 }
+
 .inicio-container.reverse {
     flex-direction: row-reverse;
 }
+
 .inicio-image {
     flex: 1;
 }
+
 .inicio-image img {
     max-width: 100%;
     border-radius: 15px;
     border: 2px solid var(--cor-destaque);
 }
+
 .inicio-content {
     flex: 1.5;
 }
+
 .inicio-content h1 {
     font-size: 3rem;
     color: #fff;
 }
+
 .inicio-content h2 {
     font-size: 1.5rem;
     color: var(--cor-destaque);
     margin-bottom: 1rem;
 }
+
 .inicio-content p {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 2rem;
     color: var(--cor-texto);
 }
+
 .btn-destaque {
     background-color: var(--cor-destaque);
     color: #fff;
@@ -114,13 +192,14 @@ header {
     transition: transform 0.3s ease, background-color 0.3s ease;
     display: inline-block;
 }
+
 .btn-destaque:hover {
     background-color: #6a44d3;
     transform: scale(1.05);
 }
 
 
-/* ----- ESTILOS DA SEÇÃO HABILIDADES (CORRIGIDO) ----- */
+/* ----- ESTILOS DA SEÇÃO HABILIDADES (REPLICANDO O VÍDEO DE REFERÊNCIA) ----- */
 .section-title {
     text-align: center;
     font-size: 2.5rem;
@@ -131,47 +210,75 @@ header {
 .habilidades-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end; /* Alinha os cards pela parte de baixo para que cresçam para cima */
     flex-wrap: wrap;
     gap: 40px;
+    padding-top: 150px; /* Garante espaço suficiente para o card expandir para cima */
+    padding-bottom: 50px; 
 }
 
 .card {
     position: relative;
-    width: 300px;
-    height: 250px;
+    width: 300px; 
+    height: 250px; /* Altura original do card */
     border-radius: 10px;
     cursor: pointer;
-    /* Adicionamos overflow: hidden para cortar o conteúdo que sai do card */
-    overflow: hidden; 
+    overflow: hidden; /* ESSENCIAL para que as faces fiquem dentro do card */
+    /* background-color será definido pelas faces */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra inicial */
+    
+    /* Transição para altura, transformação e sombra */
+    transition: height 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease; 
 }
+
+.card:hover {
+    height: 450px; /* NOVA ALTURA DO CARD NO HOVER (ex: 250px + 200px extras) */
+    transform: translateY(-20px); /* ELEVA O CARD INTEIRO NO HOVER */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* Sombra mais intensa ao elevar */
+}
+
+/* As faces terão o background-color definido individualmente */
 
 .card .face {
     width: 100%;
-    height: 100%;
     position: absolute;
-    top: 0;
     left: 0;
-    transition: 0.5s ease-in-out; /* Mudei o timing para ficar mais suave */
-    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px; /* Borda arredondada para cada face */
+    backface-visibility: hidden; 
+    
+    /* Transição para todas as propriedades relevantes */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, height 0.5s ease-in-out, top 0.5s ease-in-out, background-color 0.5s ease; 
 }
 
 .card .face.face1 {
-    z-index: 2; /* Face 1 fica na frente */
-    background-color: var(--cor-primaria);
-    border: 1px solid #333;
-    transform: translateY(0); /* CORREÇÃO: Começa na posição normal */
+    z-index: 2; /* Face 1 por cima no estado normal */
+    height: 100%; /* Altura total no estado normal */
+    top: 0; /* Começa no topo do card */
+    background-color: var(--cor-primaria); /* Fundo da face1 no normal */
+    border: none; /* Remove a borda da face, a borda principal fica no .card */
+    transform: translateY(0); /* Posição inicial da face 1 */
+    opacity: 1; /* Visível no início */
+    padding: 20px; /* Padding para centralizar o conteúdo */
 }
 
 .card:hover .face.face1 {
-    transform: translateY(-100%); /* CORREÇÃO: Sobe 100% (para fora do card) */
+    height: 150px; /* Face 1 encolhe para 150px de altura (parte superior) */
+    transform: translateY(0); /* Permanece no topo do card */
+    opacity: 1; /* MANTÉM A FACE 1 VISÍVEL */
+    background-color: var(--cor-destaque); /* Fundo da face1 muda para a cor de destaque no hover */
 }
 
 .card .face.face1 .content {
     text-align: center;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; 
 }
 
 .card .face.face1 .content .skill-icon {
@@ -182,11 +289,11 @@ header {
 }
 
 .card:hover .face.face1 .content .skill-icon {
-    color: #fff; /* Muda a cor do ícone no hover */
+    color: #fff; /* Ícone branco no hover */
 }
 
 .card .face.face1 .content h3 {
-    margin: 10px 0 0;
+    margin: 0; 
     padding: 0;
     color: var(--cor-texto);
     font-size: 1.5rem;
@@ -194,60 +301,119 @@ header {
 }
 
 .card:hover .face.face1 .content h3 {
-    color: #fff; /* Muda a cor do texto no hover */
-}
-
-/* O fundo que muda de cor pode ser um pseudo-elemento ou a própria face1 */
-.card:hover .face.face1 {
-    background-color: var(--cor-destaque);
+    color: #fff; /* Título branco no hover */
 }
 
 .card .face.face2 {
-    z-index: 1; /* Face 2 fica atrás */
+    z-index: 1; /* Face 2 por baixo da face 1 no estado normal */
+    height: 0; /* Começa com altura 0 no estado normal (invisível) */
+    top: 100%; /* Começa na parte inferior do card, fora de vista */
     padding: 20px;
     box-sizing: border-box;
-    background: var(--cor-primaria);
-    transform: translateY(100%); /* CORREÇÃO: Começa 100% abaixo (fora do card) */
+    background-color: #fff; /* Fundo branco para a face 2 (como no vídeo) */
+    color: var(--cor-texto-escuro); /* Texto escuro na face 2 */
+    transform: translateY(0); /* Não usar transform: translateY para posicionamento inicial/final */
+    opacity: 0; /* Invisível no início */
+    align-items: flex-start; /* Alinha o conteúdo ao topo da face2 */
+    flex-direction: column; /* Conteúdo em coluna */
 }
 
 .card:hover .face.face2 {
-    transform: translateY(0); /* CORREÇÃO: Sobe para a posição normal */
+    height: 300px; /* Nova altura da face2 quando o card expande (450px - 150px = 300px) */
+    top: 150px; /* Posiciona a face2 logo abaixo da face1 (que agora tem 150px) */
+    opacity: 1; /* Torna-se visível */
+    z-index: 3; /* Coloca a face2 acima da face1 */
+}
+
+.card .face.face2 .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espaço entre parágrafo e link */
+    align-items: flex-start; /* Alinha o texto à esquerda */
+    width: 100%;
+    height: 100%; /* Ocupa toda a altura da face2 */
 }
 
 .card .face.face2 .content p {
     margin: 0;
     padding: 0;
     font-size: 1rem;
-    color: var(--cor-texto);
+    color: var(--cor-texto-escuro); /* Texto da face2 escuro */
     line-height: 1.6;
 }
 
 .card .face.face2 .content a {
-    margin: 15px 0 0;
+    margin-top: auto; /* Empurra o link para o final da face2 */
     display: inline-block;
     text-decoration: none;
     font-weight: 900;
-    color: var(--cor-destaque);
+    color: var(--cor-destaque); 
     padding: 5px 10px;
-    border: 1px solid var(--cor-destaque);
+    border: 1px solid var(--cor-destaque); 
     border-radius: 5px;
     transition: 0.3s;
 }
 
 .card .face.face2 .content a:hover {
     background: var(--cor-destaque);
-    color: #fff;
+    color: #fff; 
+}
+
+/* Media Queries para a seção de Habilidades */
+@media (max-width: 768px) {
+    .habilidades-container {
+        gap: 30px; 
+        padding-top: 120px; /* Ajuste para mobile */
+    }
+
+    .card {
+        width: 280px; 
+        height: 230px; /* Altura original menor */
+    }
+    .card:hover {
+        height: 400px; /* Nova altura ajustada para mobile (ex: 230px + 170px extras) */
+    }
+
+    .card .face.face1 {
+        height: 100%; /* Mantém 100% no normal */
+    }
+    .card:hover .face.face1 {
+        height: 130px; /* Altura da face1 em mobile (para 400px de card) */
+    }
+
+    .card .face.face2 {
+        height: 0; /* Começa com altura 0 */
+        top: 100%; /* Fora de vista */
+    }
+    .card:hover .face.face2 {
+        height: 270px; /* Nova altura da face2 em mobile (400px - 130px) */
+        top: 130px; /* Posicionada logo abaixo da face1 */
+    }
+
+    .card .face.face1 .content .skill-icon {
+        font-size: 3.5rem; 
+    }
+
+    .card .face.face1 .content h3 {
+        font-size: 1.3rem; 
+    }
+
+    .card .face.face2 .content p {
+        font-size: 0.9rem; 
+    }
 }
 
 
-/* ... (Estilos do portfólio, contato, etc. - sem alteração) ... */
+/* --- ESTILOS DO PORTFÓLIO --- */
 #portfolio {
     background-color: var(--cor-primaria);
 }
+
 .portfolio-container {
     width: 100%;
     padding: 2rem 0;
 }
+
 .portfolio-card {
     position: relative;
     border-radius: 10px;
@@ -255,15 +421,18 @@ header {
     cursor: pointer;
     height: 300px;
 }
+
 .portfolio-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
 }
+
 .portfolio-card:hover img {
     transform: scale(1.1);
 }
+
 .portfolio-card-info {
     position: absolute;
     bottom: 0;
@@ -273,12 +442,16 @@ header {
     color: #fff;
     padding: 2rem 1.5rem 1.5rem;
 }
+
 .swiper-button-next, .swiper-button-prev {
     color: var(--cor-destaque) !important;
 }
+
 .swiper-pagination-bullet-active {
     background-color: var(--cor-destaque) !important;
 }
+
+/* Estilos do Modal */
 .modal-container {
     position: fixed;
     top: 0;
@@ -291,10 +464,13 @@ header {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    overflow-y: auto; 
 }
+
 .modal-container.active {
     display: flex;
 }
+
 .modal-content {
     background-color: var(--cor-fundo);
     padding: 2.5rem;
@@ -305,10 +481,12 @@ header {
     position: relative;
     animation: fadeIn 0.4s ease;
 }
+
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
+
 .modal-close-btn {
     position: absolute;
     top: 15px;
@@ -318,9 +496,11 @@ header {
     cursor: pointer;
     transition: color 0.3s ease;
 }
+
 .modal-close-btn:hover {
     color: #fff;
 }
+
 #modal-image {
     width: 100%;
     height: 300px;
@@ -328,17 +508,20 @@ header {
     border-radius: 5px;
     margin-bottom: 1.5rem;
 }
+
 #modal-title {
     font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--cor-destaque);
 }
+
 .tags-container {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
 }
+
 .tag {
     background-color: var(--cor-primaria);
     color: var(--cor-texto-secundario);
@@ -346,10 +529,13 @@ header {
     border-radius: 5px;
     font-size: 0.9rem;
 }
+
 #modal-description {
     line-height: 1.7;
     margin-bottom: 2rem;
 }
+
+/* --- ESTILOS DE CONTATO --- */
 #contato {
     display: flex;
     flex-direction: column;
@@ -357,26 +543,31 @@ header {
     justify-content: center;
     text-align: center;
 }
+
 .section-subtitle {
     max-width: 600px;
     margin-bottom: 3rem;
     color: var(--cor-texto-secundario);
     line-height: 1.6;
 }
+
 .contact-form {
     width: 100%;
     max-width: 700px;
 }
+
 .form-group {
     margin-bottom: 1.5rem;
     text-align: left;
 }
+
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
     color: var(--cor-texto);
 }
+
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -388,12 +579,14 @@ header {
     font-size: 1rem;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
+
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--cor-destaque);
     box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.2);
 }
+
 .contact-form button {
     width: 100%;
     padding: 15px;
@@ -401,6 +594,8 @@ header {
     border: none;
     cursor: pointer;
 }
+
+/* --- ESTILOS DO FOOTER --- */
 footer {
     display: flex;
     justify-content: space-between;
@@ -408,26 +603,111 @@ footer {
     padding: 2rem 8%;
     background-color: var(--cor-primaria);
     border-top: 1px solid var(--cor-destaque);
+    flex-wrap: wrap; 
+    text-align: center; 
+    gap: 1rem; 
 }
+
+.footer-logo, .footer-copyright, .footer-social {
+    flex-basis: 100%; 
+}
+
+@media (min-width: 768px) {
+    .footer-logo, .footer-copyright, .footer-social {
+        flex-basis: auto; 
+    }
+}
+
 .footer-copyright p {
     font-size: 0.9rem;
     color: var(--cor-texto-secundario);
 }
+
 .footer-social a {
     color: var(--cor-texto);
     font-size: 1.5rem;
-    margin-left: 1.5rem;
+    margin: 0 0.75rem; 
     transition: color 0.3s ease;
 }
+
 .footer-social a:hover {
     color: var(--cor-destaque);
 }
+
+/* Animações de Scroll */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Media Queries Gerais */
+@media (max-width: 1024px) {
+    .inicio-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .inicio-container.reverse {
+        flex-direction: column;
+    }
+    .inicio-image {
+        margin-bottom: 2rem;
+    }
+    .inicio-content h1 {
+        font-size: 2.5rem;
+    }
+    .inicio-content h2 {
+        font-size: 1.3rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 80px 5%;
+    }
+    .navbar {
+        padding: 1rem 5%;
+    }
+    .inicio-content h1 {
+        font-size: 2rem;
+    }
+    .inicio-content h2 {
+        font-size: 1.1rem;
+    }
+    .inicio-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .inicio-content h1 {
+        font-size: 1.8rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .btn-destaque {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    .modal-content {
+        padding: 1.5rem;
+    }
+    .modal-close-btn {
+        font-size: 1.5rem;
+    }
+    #modal-title {
+        font-size: 1.5rem;
+    }
+    #modal-image {
+        height: 200px;
+    }
 }
