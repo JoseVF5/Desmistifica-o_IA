@@ -428,7 +428,6 @@ header {
     opacity: 1;
     cursor: pointer;
     transform: scale(1.02);
-    overflow: visible; /* Adicionado para permitir expansão visual */
     z-index: 10;       /* Adicionado para sobrepor outros itens */
 }
 
@@ -443,8 +442,10 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 100%;
-    object-fit: cover;
+    width: 100%;   /* GARANTE que a imagem ocupe a largura total do item */
+    height: 100%;  /* GARANTE que a imagem ocupe a altura total do item */
+    object-fit: cover; /* Faz a imagem cobrir a área, cortando se necessário */
+    object-position: center; /* Centraliza a imagem dentro da área */
     filter: grayscale(0.5) blur(2px); /* Efeito de cinza e leve desfoque na imagem "fechada" */
     transition: 0.5s;
 }
@@ -577,10 +578,6 @@ header {
     .accordion-item:hover {
         flex: 0 0 auto; /* Mantém auto no hover */
         height: 250px; /* Altura expandida no hover */
-    }
-
-    .accordion:hover .accordion-item {
-        flex: 0 0 auto; /* Ao passar o mouse no UL, os itens não voltam ao 80px fixos */
     }
 
     .accordion-item .content {
