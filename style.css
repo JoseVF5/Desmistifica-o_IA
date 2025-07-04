@@ -193,8 +193,8 @@ img.logo { /* Mais específico para a imagem da logo */
 }
 
 .inicio-content ul { /* Adicionado estilo para a lista na seção de início */
-    font-size: 1.1rem; 
-    line-height: 1.6;
+    font-size: 0.9rem; 
+    line-height: 1.1;
     color: var(--cor-texto);
     margin-left: 20px;
     list-style-type: disc;
@@ -863,7 +863,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 8%;
+    padding: 1rem 4%;
     background-color: var(--cor-primaria);
     border-top: 1px solid var(--cor-destaque);
     flex-wrap: wrap; 
@@ -895,7 +895,7 @@ footer {
 
 .footer-social a {
     color: var(--cor-texto);
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     margin: 0 0.75rem; 
     transition: color 0.3s ease;
 }
