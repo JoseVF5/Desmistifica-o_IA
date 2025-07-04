@@ -208,6 +208,12 @@ header {
     padding-top: 250px; /* Altere para esta linha */
     padding-bottom: 50px; /* Pode manter ou adicionar um padding inferior se quiser */
 }
+/* Cor específica para o título "Minhas Habilidades" */
+.habilidades-titulo {
+    color: #7f5af0; /* Coloque aqui a cor que desejar! */
+    padding-bottom: 10px; /* Adiciona um espaçamento inferior */
+}
+
 .card {
     position: relative;
     width: 300px;
