@@ -872,7 +872,7 @@ footer {
 }
 
 .footer-logo, .footer-copyright, .footer-social {
-        flex-basis: auto100%; 
+        flex-basis: 100%; 
     }
 
 @media (min-width: 768px) {
