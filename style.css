@@ -1,13 +1,13 @@
-/* Importando uma fonte do Google Fonts (sugestão) */
+/* Importando uma fonte do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 /* ----- VARIÁVEIS DE COR E CONFIGURAÇÕES GERAIS ----- */
 :root {
-    --cor-fundo: #121212; /* Preto/Cinza bem escuro */
-    --cor-primaria: #1e1e1e; /* Um tom de cinza para os cards/seções */
-    --cor-destaque: #7f5af0; /* Um roxo/azul para links e detalhes */
-    --cor-texto: #e0e0e0; /* Cinza claro para textos */
-    --cor-texto-secundario: #a0a0a0; /* Cinza um pouco mais escuro */
+    --cor-fundo: #121212;
+    --cor-primaria: #1e1e1e;
+    --cor-destaque: #7f5af0;
+    --cor-texto: #e0e0e0;
+    --cor-texto-secundario: #a0a0a0;
 }
 
 /* Reset Básico e Estilos Globais */
@@ -18,7 +18,7 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Rolagem suave ao clicar nos links do menu */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -28,24 +28,25 @@ body {
 }
 
 section {
-    padding: 100px 8%; /* Espaçamento interno para todas as seções */
-    min-height: 100vh; /* Cada seção ocupa pelo menos a altura inteira da tela */
+    padding: 100px 8%;
+    min-height: 100vh;
+    overflow: hidden; /* Evita barras de rolagem indesejadas pela animação */
 }
 
 /* ----- ESTILOS DO CABEÇALHO ----- */
 header {
-    position: fixed; /* Deixa o cabeçalho fixo no topo */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(18, 18, 18, 0.8); /* Fundo com um pouco de transparência */
-    backdrop-filter: blur(10px); /* Efeito de vidro fosco, super moderno! */
-    z-index: 1000; /* Garante que o cabeçalho fique sobre todo o conteúdo */
+    background-color: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between; /* Espaça a logo e o menu */
+    justify-content: space-between;
     align-items: center;
     padding: 1rem 8%;
 }
@@ -60,7 +61,7 @@ header {
 .nav-menu {
     list-style: none;
     display: flex;
-    gap: 2rem; /* Espaçamento entre os itens do menu */
+    gap: 2rem;
 }
 
 .nav-link {
@@ -70,57 +71,29 @@ header {
 }
 
 .nav-link:hover {
-    color: var(--cor-destaque); /* Muda a cor ao passar o mouse */
-}
-
-
-/* ----- ESTILOS DO RODAPÉ ----- */
-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 8%;
-    background-color: var(--cor-primaria);
-    border-top: 1px solid var(--cor-destaque);
-}
-
-.footer-copyright p {
-    font-size: 0.9rem;
-    color: var(--cor-texto-secundario);
-}
-
-.footer-social a {
-    color: var(--cor-texto);
-    font-size: 1.5rem;
-    margin-left: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-.footer-social a:hover {
     color: var(--cor-destaque);
 }
 
 /* ----- ESTILOS DA SEÇÃO INÍCIO ----- */
 #inicio {
     display: flex;
-    flex-direction: column; /* Organiza os dois blocos um abaixo do outro */
-    justify-content: center; /* Centraliza o conteúdo verticalmente na seção */
-    gap: 4rem; /* Espaço entre os dois blocos */
+    flex-direction: column;
+    justify-content: center;
+    gap: 4rem;
 }
 
 .inicio-container {
     display: flex;
-    align-items: center; /* Alinha imagem e texto verticalmente */
-    gap: 3rem; /* Espaço entre a imagem e o texto */
+    align-items: center;
+    gap: 3rem;
 }
 
-/* Inverte a ordem para o segundo bloco */
 .inicio-container.reverse {
     flex-direction: row-reverse;
 }
 
 .inicio-image {
-    flex: 1; /* Faz a imagem ocupar uma parte do espaço */
+    flex: 1;
 }
 
 .inicio-image img {
@@ -130,7 +103,7 @@ footer {
 }
 
 .inicio-content {
-    flex: 1.5; /* Faz o texto ocupar um pouco mais de espaço que a imagem */
+    flex: 1.5;
 }
 
 .inicio-content h1 {
@@ -159,10 +132,11 @@ footer {
     border-radius: 5px;
     font-weight: bold;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    display: inline-block; /* Garante que o botão se comporte corretamente */
 }
 
 .btn-destaque:hover {
-    background-color: #6a44d3; /* Um tom um pouco mais escuro do destaque */
+    background-color: #6a44d3;
     transform: scale(1.05);
 }
 
@@ -176,9 +150,8 @@ footer {
 
 .habilidades-container {
     display: grid;
-    /* Cria 3 colunas em telas grandes, 2 em médias e 1 em pequenas */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem; /* Espaço entre os cards */
+    gap: 2rem;
 }
 
 .skill-card {
@@ -191,7 +164,7 @@ footer {
 }
 
 .skill-card:hover {
-    transform: translateY(-10px); /* Efeito de flutuar ao passar o mouse */
+    transform: translateY(-10px);
     border-color: var(--cor-destaque);
 }
 
@@ -211,16 +184,14 @@ footer {
     font-size: 1.5rem;
 }
 
-/* A parte mais importante: a descrição escondida */
 .skill-description {
-    max-height: 0; /* Começa com altura zero, ou seja, escondido */
-    overflow: hidden; /* Garante que o conteúdo não vaze */
-    transition: max-height 0.5s ease-out; /* Animação suave de abertura/fechamento */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
 }
 
-/* Quando o card tiver a classe 'active', a descrição aparece */
 .skill-card.active .skill-description {
-    max-height: 200px; /* Dê um valor de altura máxima suficiente para o texto */
+    max-height: 200px;
     margin-top: 1rem;
 }
 
@@ -237,7 +208,7 @@ footer {
 .portfolio-card {
     position: relative;
     border-radius: 10px;
-    overflow: hidden; /* Garante que a imagem não saia do card */
+    overflow: hidden;
     cursor: pointer;
     height: 300px;
 }
@@ -245,12 +216,12 @@ footer {
 .portfolio-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Faz a imagem cobrir todo o espaço sem distorcer */
+    object-fit: cover;
     transition: transform 0.4s ease;
 }
 
 .portfolio-card:hover img {
-    transform: scale(1.1); /* Efeito de zoom na imagem */
+    transform: scale(1.1);
 }
 
 .portfolio-card-info {
@@ -263,7 +234,6 @@ footer {
     padding: 2rem 1.5rem 1.5rem;
 }
 
-/* Estilização das setas e paginação do Swiper */
 .swiper-button-next, .swiper-button-prev {
     color: var(--cor-destaque) !important;
 }
@@ -274,20 +244,19 @@ footer {
 
 /* ----- ESTILOS DO MODAL ----- */
 .modal-container {
-    position: fixed; /* Fica fixo sobre toda a página */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.85);
-    z-index: 2000; /* Fica acima de tudo, até do header */
-    display: none; /* Começa escondido */
+    z-index: 2000;
+    display: none;
     justify-content: center;
     align-items: center;
     padding: 2rem;
 }
 
-/* Adicionaremos a classe 'active' via JS para mostrar o modal */
 .modal-container.active {
     display: flex;
 }
@@ -405,12 +374,52 @@ footer {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--cor-destaque);
-    box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.2); /* Sombra suave no foco */
+    box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.2);
 }
 
 .contact-form button {
     width: 100%;
     padding: 15px;
     font-size: 1.1rem;
-    border: none; /* O botão não precisa de borda */
+    border: none;
+    cursor: pointer;
+}
+
+/* ----- ESTILOS DO RODAPÉ ----- */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 8%;
+    background-color: var(--cor-primaria);
+    border-top: 1px solid var(--cor-destaque);
+}
+
+.footer-copyright p {
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+}
+
+.footer-social a {
+    color: var(--cor-texto);
+    font-size: 1.5rem;
+    margin-left: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--cor-destaque);
+}
+
+
+/* ----- ESTILOS DA ANIMAÇÃO DE SCROLL (NOVO) ----- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
