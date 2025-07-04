@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // O código para os cards de habilidade foi removido daqui.
-
     // --- INICIALIZAÇÃO DO CARROSSEL SWIPER ---
     const swiper = new Swiper('.portfolio-container', {
         loop: true,

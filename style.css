@@ -29,13 +29,7 @@ section {
     min-height: 100vh;
     overflow: hidden;
 }
-
-header, .navbar, .logo, .nav-menu, .nav-link, .nav-link:hover {
-    /* Estilos do cabeçalho ... (sem alteração) */
-}
-#inicio, .inicio-container, .inicio-image, .inicio-content, .btn-destaque, .btn-destaque:hover {
-    /* Estilos da seção Início ... (sem alteração) */
-}
+/* ... (Estilos do header, início, etc. - sem alteração) ... */
 header {
     position: fixed;
     top: 0;
@@ -125,7 +119,8 @@ header {
     transform: scale(1.05);
 }
 
-/* ----- ESTILOS DA SEÇÃO HABILIDADES (NOVOS ESTILOS) ----- */
+
+/* ----- ESTILOS DA SEÇÃO HABILIDADES (CORRIGIDO) ----- */
 .section-title {
     text-align: center;
     font-size: 2.5rem;
@@ -145,9 +140,10 @@ header {
     position: relative;
     width: 300px;
     height: 250px;
-    background-color: var(--cor-primaria);
     border-radius: 10px;
     cursor: pointer;
+    /* Adicionamos overflow: hidden para cortar o conteúdo que sai do card */
+    overflow: hidden; 
 }
 
 .card .face {
@@ -156,59 +152,66 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    transition: 0.5s;
+    transition: 0.5s ease-in-out; /* Mudei o timing para ficar mais suave */
     border-radius: 10px;
-}
-
-.card .face.face1 {
-    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translateY(100px); /* Começa um pouco para baixo */
+}
+
+.card .face.face1 {
+    z-index: 2; /* Face 1 fica na frente */
     background-color: var(--cor-primaria);
     border: 1px solid #333;
+    transform: translateY(0); /* CORREÇÃO: Começa na posição normal */
 }
 
 .card:hover .face.face1 {
-    transform: translateY(0); /* Sobe para a posição 0 */
-    background-color: var(--cor-destaque); /* Muda a cor no hover */
+    transform: translateY(-100%); /* CORREÇÃO: Sobe 100% (para fora do card) */
 }
 
 .card .face.face1 .content {
-    opacity: 0.5;
-    transition: 0.5s;
     text-align: center;
-}
-
-.card:hover .face.face1 .content {
-    opacity: 1;
 }
 
 .card .face.face1 .content .skill-icon {
     font-size: 4rem;
-    color: #fff;
+    color: var(--cor-texto);
+    transition: 0.5s;
     margin-bottom: 10px;
+}
+
+.card:hover .face.face1 .content .skill-icon {
+    color: #fff; /* Muda a cor do ícone no hover */
 }
 
 .card .face.face1 .content h3 {
     margin: 10px 0 0;
     padding: 0;
-    color: #fff;
+    color: var(--cor-texto);
     font-size: 1.5rem;
+    transition: 0.5s;
+}
+
+.card:hover .face.face1 .content h3 {
+    color: #fff; /* Muda a cor do texto no hover */
+}
+
+/* O fundo que muda de cor pode ser um pseudo-elemento ou a própria face1 */
+.card:hover .face.face1 {
+    background-color: var(--cor-destaque);
 }
 
 .card .face.face2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 1; /* Face 2 fica atrás */
     padding: 20px;
     box-sizing: border-box;
-    transform: translateY(-100px); /* Começa escondida para cima */
+    background: var(--cor-primaria);
+    transform: translateY(100%); /* CORREÇÃO: Começa 100% abaixo (fora do card) */
 }
 
 .card:hover .face.face2 {
-    transform: translateY(0); /* Desliza para a posição 0 */
+    transform: translateY(0); /* CORREÇÃO: Sobe para a posição normal */
 }
 
 .card .face.face2 .content p {
@@ -225,7 +228,7 @@ header {
     text-decoration: none;
     font-weight: 900;
     color: var(--cor-destaque);
-    padding: 5px;
+    padding: 5px 10px;
     border: 1px solid var(--cor-destaque);
     border-radius: 5px;
     transition: 0.3s;
@@ -236,10 +239,8 @@ header {
     color: #fff;
 }
 
-/* Estilos de outras seções... */
-#portfolio, .portfolio-container, .portfolio-card, #contato, .contact-form, footer {
-    /* Estilos das seções Portfólio, Contato e Rodapé... (sem alteração) */
-}
+
+/* ... (Estilos do portfólio, contato, etc. - sem alteração) ... */
 #portfolio {
     background-color: var(--cor-primaria);
 }
@@ -277,9 +278,6 @@ header {
 }
 .swiper-pagination-bullet-active {
     background-color: var(--cor-destaque) !important;
-}
-.modal-container, .modal-content, .modal-close-btn {
-    /* Estilos do modal ... (sem alteração) */
 }
 .modal-container {
     position: fixed;
