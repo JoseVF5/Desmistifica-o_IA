@@ -227,27 +227,77 @@ header {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap; /* Alterado para wrap para quebrar linha em telas menores */
-    gap: 40px;
+    gap: 20px;
     padding-top: 50px; /* Ajuste o padding superior */
     padding-bottom: 50px;
 }
 
+/* Adicionar uma regra específica para telas maiores que 768px (desktop) */
+@media (min-width: 769px) { /* Use 769px para começar logo após o mobile */
+    .habilidades-container {
+        flex-wrap: nowrap; /* Impede a quebra de linha em desktop */
+    }
+
+    /* Opcional: Ajustar o tamanho da fonte e ícones proporcionalmente */
+    .card .face.face1 .content h3 {
+        font-size: clamp(1rem, 1.5vw, 1.5rem); /* Reduzirá a fonte em telas menores do desktop */
+    }
+    .card .face.face1 .content img {
+        max-width: clamp(60px, 8vw, 80px); /* Reduzirá o ícone em telas menores do desktop */
+    }
+    .card .face.face2 .content p {
+        font-size: clamp(0.8rem, 1.2vw, 1rem); /* Reduzirá o parágrafo em telas menores do desktop */
+    }
+    .card .face.face2 .content a {
+        font-size: clamp(0.7rem, 1vw, 1rem); /* Reduzirá o link em telas menores do desktop */
+        padding: clamp(5px, 0.8vw, 8px) clamp(10px, 1.5vw, 15px); /* Reduzirá o padding do link */
+    }
+}
+
+/* Adicionar uma regra específica para telas maiores que Xpx (desktop) */
+@media (min-width: 1200px) { /* Ajuste este valor para o ponto onde todos os 6 cards cabem SEMPRE lado a lado */
+    .habilidades-container {
+        flex-wrap: nowrap; /* Impede a quebra de linha em desktop */
+    }
+
+    /* Os valores clamp() para fontes/ícones devem estar aqui para escalar se a tela encolher *dentro* do modo nowrap */
+    .card .face.face1 .content h3 {
+        font-size: clamp(1rem, 1.8vw, 1.5rem);
+    }
+    .card .face.face1 .content img {
+        max-width: clamp(50px, 7vw, 80px);
+    }
+    .card .face.face2 .content p {
+        font-size: clamp(0.7rem, 1.1vw, 1rem);
+    }
+    .card .face.face2 .content a {
+        font-size: clamp(0.65rem, 0.9vw, 1rem);
+        padding: clamp(4px, 0.7vw, 8px) clamp(8px, 1.2vw, 15px);
+    }
+}
+
+
 /* Cor específica para o título "Minhas Habilidades" */
 .habilidades-titulo {
     color: #7f5af0;
-    padding-bottom: 10px; /* Adiciona um espaçamento inferior */
-    text-align: center; /* Centraliza o título */
-    width: 100%; /* Garante que o título ocupe a largura total */
+    padding-bottom: 10px;
+    /* NOVO: Ajuste o margin-bottom com clamp para ser responsivo */
+    /* clamp(min-value, ideal-value_in_vw, max-value) */
+    margin-bottom: clamp(50px, 8vw, 250px); /* Exemplo: Mínimo 50px, ideal 8% da largura da tela, máximo 250px */
+    text-align: center;
+    width: 100%;
 }
 
 .card {
     position: relative;
-    width: 300px;
-    height: 250px;
     cursor: pointer;
-    overflow: hidden; /* Essencial para o efeito de deslizar */
+    overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.5s ease;
+    flex: 1 1 auto;
+    min-width: clamp(180px, 15vw, 250px);
+    width: 100%;
+    aspect-ratio: 1.2 / 1;
 }
 
 .card:hover {
@@ -292,7 +342,7 @@ header {
 }
 
 .card .face.face1 .content img {
-    max-width: 80px; /* Tamanho para ícones SVG */
+    max-width: clamp(50px, 7vw, 80px);
     height: auto;
     margin-bottom: 10px;
     transition: transform 0.5s;
@@ -305,7 +355,7 @@ header {
 .card .face.face1 .content h3 {
     margin: 0;
     padding: 0;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
     color: var(--cor-texto);
     transition: color 0.5s;
 }
@@ -328,33 +378,48 @@ header {
     /* ESTA FACE NÃO POSSUI ANIMAÇÃO NO HOVER, POR ISSO FICA ESTÁTICA */
 }
 
-.card .face.face2 .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    height: 100%;
-}
-
 .card .face.face2 .content p {
     margin: 0;
     padding: 0;
-    font-size: 1rem;
+    /* Ajuste o clamp para permitir uma fonte menor e/ou mais responsiva */
+    font-size: clamp(0.4rem, 1.0vw, 0.8rem); /* Reduzindo o min-size (0.5rem) e o vw (1.5vw) */
     color: var(--cor-texto-escuro);
-    line-height: 1.6;
+    line-height: 1.4;
+
+    /* REMOVA OU COMENTE ESTAS LINHAS para que o texto possa ter mais linhas e se ajustar */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    /* display: -webkit-box; */
+    /* -webkit-line-clamp: 3; */ /* Este é o que estava cortando */
+    /* -webkit-box-orient: vertical; */
+
+    margin-bottom: 0.2rem;
 }
 
 .card .face.face2 .content a {
-    margin-top: auto;
+    margin-top: auto; /* Isso é ótimo, pois empurra o botão para o final do flex container */
     display: inline-block;
     text-decoration: none;
     font-weight: 900;
+    font-size: clamp(0.65rem, 0.8vw, 0.8rem); /* Já está com clamp, o que é bom */
     color: var(--cor-destaque);
-    padding: 5px 10px;
+    padding: clamp(3px, 0.7vw, 4px);
     border: 1px solid var(--cor-destaque);
-    border-radius: 5px;
+    border-radius: 1px;
     transition: 0.3s;
+    white-space: nowrap; /* Garante que o texto do botão não quebre linha */
+}
+
+/* VAMOS REVER O CONTÊINER PAI DESSES ELEMENTOS NA FACE2 */
+.card .face.face2 .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* CRÍTICO: Distribui o espaço entre os itens (p e a) */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    width: 100%;
+    height: 100%; /* Garante que o conteúdo preencha a face */
+    padding: 3px; /* Padding interno para que o conteúdo não cole nas bordas do card */
+    box-sizing: border-box; /* Inclui padding na largura e altura total */
 }
 
 
@@ -373,6 +438,7 @@ header {
     .card {
         width: 280px;
         height: 230px;
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
     }
 
     .card .face.face1 .content .skill-icon {
@@ -381,6 +447,7 @@ header {
 
     .card .face.face1 .content img {
         max-width: 70px;
+        max-width: clamp(60px, 15vw, 70px);
     }
 
     .card .face.face1 .content h3 {
@@ -389,6 +456,7 @@ header {
 
     .card .face.face2 .content p {
         font-size: 0.9rem;
+        font-size: clamp(0.8rem, 3vw, 0.9rem);
     }
 }
 
@@ -634,6 +702,7 @@ header {
         font-size: 0.8rem;
     }
 }
+
 
 /* --- ESTILOS DO MODAL --- */
 .modal-container {
