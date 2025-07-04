@@ -201,6 +201,10 @@ header {
     transform: scale(1.05);
 }
 
+ul {
+    font-size: 1.5em; 
+}
+
 
 /* ----- ESTILOS DA SEÇÃO HABILIDADES (REPLICANDO O VÍDEO DE REFERÊNCIA) ----- */
 
