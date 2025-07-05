@@ -235,7 +235,7 @@ img.logo { /* Mais específico para a imagem da logo */
 
 
 .btn-destaque {
-    background-color:#1e1e1e;
+    background-color:var(--cor-destaque);
     color: #fff;
     padding: 12px 24px;
     text-decoration: none;
