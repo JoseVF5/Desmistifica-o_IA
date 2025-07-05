@@ -13,13 +13,7 @@ Este projeto é uma landing page pessoal para José Victor, um Engenheiro de Dad
 
 * **Seção Início:** Apresenta José Victor, sua formação em Engenharia de Software e sua paixão por Engenharia de Dados, Big Data e algoritmos.
     * Inclui uma chamada proeminente para ação para visualizar seus projetos.
-* **Seção Habilidades:** Destaca as proficiências técnicas de José Victor com cartões interativos. Cada cartão exibe um ícone, nome da habilidade, uma breve descrição e um link "Saiba Mais". As habilidades atuais incluem:
-    * Python
-    * PySpark
-    * MySQL
-    * Numpy
-    * Docker
-    * Git
+* **Seção Habilidades:** Destaca as proficiências técnicas de José Victor com cartões interativos. Cada cartão exibe um ícone, nome da habilidade, uma breve descrição e um link "Saiba Mais".
 * **Seção Portfólio:** Apresenta os projetos de José Victor usando um layout estilo acordeão interativo.
     * Clicar em um cartão de projeto abre um modal com mais detalhes, incluindo título, tags, uma descrição detalhada, uma imagem e um link para o repositório do GitHub.
     * Atualmente apresenta um projeto "Calculadora em Python" e vários espaços reservados "EM CONSTRUÇÃO" para projetos futuros.
