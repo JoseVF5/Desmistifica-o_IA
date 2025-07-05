@@ -1,5 +1,9 @@
 # Landing Page - José Victor | Engenheiro de Dados
 
+<div align="center">
+<img src="https://github.com/amaro-netto/JV_SitePortifolio/blob/main/asset/img/LOGO%20JV_LOGO%20HORIZONTAL.svg" alt="logo" width="700">
+</div>
+
 Este projeto é uma landing page pessoal para José Victor, um Engenheiro de Dados Júnior. Ele serve como um portfólio online para apresentar suas habilidades, projetos e informações de contato.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
