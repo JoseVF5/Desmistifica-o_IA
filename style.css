@@ -149,6 +149,35 @@ img.logo { /* Mais específico para a imagem da logo */
     flex-direction: column;
     justify-content: center;
     gap: 4rem;
+
+    /* A cor de fundo de fallback é importante se o SVG não carregar */
+    background-color: var(--cor-fundo);
+
+    /* Propriedades ESSENCIAIS para que o pseudoelemento ::before funcione como background */
+    position: relative; /* O pseudoelemento será posicionado em relação a esta seção */
+    overflow: hidden;   /* Ajuda a garantir que o pseudoelemento não vaze se for maior que a seção */
+    z-index: 1;         /* Garante que o conteúdo (texto, imagens) da seção fique acima do background */
+}
+
+#inicio::before {
+    content: ''; /* Propriedade obrigatória para pseudoelementos */
+    position: absolute; /* Posiciona o pseudoelemento de forma absoluta dentro da seção pai */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Configurações da imagem SVG de fundo */
+    background-image: url('/asset/img/background.svg'); /* Substitua pelo caminho correto do seu SVG */
+    background-repeat: no-repeat; /* A imagem não se repete */
+    background-size: cover; /* A imagem cobre toda a área do pseudoelemento, mantendo a proporção */
+    background-position: center center; /* Centraliza a imagem de fundo */
+
+    z-index: -1; /* Coloca o pseudoelemento (com o SVG) atrás do conteúdo real da seção */
+
+    /* AQUI VOCÊ CONTROLA A OPACIDADE DO BACKGROUND SVG */
+    opacity: 5%; /* Ajuste este valor (entre 0 e 1) para controlar a "invisibilidade" da imagem */
+                  /* Quanto mais próximo de 0, mais sutil/invisível ela será. */
 }
 
 .inicio-container {
@@ -206,7 +235,7 @@ img.logo { /* Mais específico para a imagem da logo */
 
 
 .btn-destaque {
-    background-color: var(--cor-destaque);
+    background-color:#1e1e1e;
     color: #fff;
     padding: 12px 24px;
     text-decoration: none;
@@ -217,12 +246,15 @@ img.logo { /* Mais específico para a imagem da logo */
 }
 
 .btn-destaque:hover {
-    background-color: #6a44d3;
+    background-color: #000000;
     transform: scale(1.05);
 }
 
 
 /* ----- ESTILOS DA SEÇÃO HABILIDADES (REPLICANDO O VÍDEO DE REFERÊNCIA) ----- */
+#habilidades {
+    background-color: var(--cor-destaque);
+}
 
 .habilidades-container {
     display: flex;
@@ -281,7 +313,7 @@ img.logo { /* Mais específico para a imagem da logo */
 
 /* Cor específica para o título "Minhas Habilidades" */
 .habilidades-titulo {
-    color: #7f5af0;
+    color: #ffffff;
     padding-bottom: 10px;
     /* NOVO: Ajuste o margin-bottom com clamp para ser responsivo */
     /* clamp(min-value, ideal-value_in_vw, max-value) */
@@ -333,7 +365,7 @@ img.logo { /* Mais específico para a imagem da logo */
 /* Ação de Hover no Card: Move a Face 1 para cima */
 .card:hover .face.face1 {
     transform: translateY(-100%);
-    background-color: var(--cor-destaque);
+    background-color:#121212;
 }
 
 .card .face.face1 .content .skill-icon {
@@ -805,12 +837,13 @@ img.logo { /* Mais específico para a imagem da logo */
     align-items: center;
     justify-content: center;
     text-align: center;
+    background-color: var(--cor-destaque);
 }
 
 .section-subtitle {
     max-width: 600px;
     margin-bottom: 3rem;
-    color: var(--cor-texto-secundario);
+    color:#ffffff;
     line-height: 1.6;
 }
 
@@ -836,7 +869,7 @@ img.logo { /* Mais específico para a imagem da logo */
     width: 100%;
     padding: 12px;
     border-radius: 5px;
-    border: 1px solid #444;
+    border: 1px solid #ffffff;
     background-color: var(--cor-primaria);
     color: var(--cor-texto);
     font-size: 1rem;
@@ -846,8 +879,8 @@ img.logo { /* Mais específico para a imagem da logo */
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--cor-destaque);
-    box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.2);
+    border-color:#ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 .contact-form button {
