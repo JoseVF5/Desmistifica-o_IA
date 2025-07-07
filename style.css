@@ -497,6 +497,7 @@ img.logo { /* Mais específico para a imagem da logo */
 /* --- ESTILOS DO PORTFÓLIO (AGORA COMO ACORDEÃO) --- */
 #portfolio {
     background-color: var(--cor-fundo); /* Mudado para cor-fundo para o acordeão */
+    
     /* Mantido display: flex, flex-direction: column, align-items: center, justify-content: center do section geral */
 }
 
