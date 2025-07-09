@@ -2,7 +2,7 @@
 <p align="center">Um portfólio profissional moderno e responsivo para José Victor, Engenheiro de Dados</p>
 
 <div align="center">
-<img src="https://github.com/amaro-netto/JV_SitePortifolio/blob/main/asset/img/LOGO%20JV_LOGO%20HORIZONTAL.svg" alt="logo" width="700">
+<img src="https://github.com/amaro-netto/JV_SitePortifolio/blob/main/asset/img/LOGO%20JV_White%20Horizontal.svg" alt="logo" width="700">
 </div>
 
 ## Badges
@@ -108,15 +108,8 @@ O projeto possui um design moderno e elegante, com o logotipo JV em várias vers
 │   ├── img/
 │   │   ├── Blogpost-Engenheiro-de-dados-768x512.jpg
 │   │   ├── IMG_2412.png
-│   │   ├── LOGO JV_Black Horizontal.svg
-│   │   ├── LOGO JV_Black Icon.svg
-│   │   ├── LOGO JV_Black Vertical.svg
-│   │   ├── LOGO JV_LOGO HORIZONTAL.svg
-│   │   ├── LOGO JV_LOGO ICON.svg
-│   │   ├── LOGO JV_LOGO VERTICAL.svg
 │   │   ├── LOGO JV_White Horizontal.svg
 │   │   ├── LOGO JV_White Icon.svg
-│   │   ├── LOGO JV_White Vertical.svg
 │   │   ├── background.svg
 │   │   ├── cover/
 │   │   │   ├── 9906016.webp
