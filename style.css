@@ -1,7 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-/* Importe Poppins também, se desejar manter a fonte do exemplo do acordeão. */
-/* Se não, o Roboto será usado, o que também é bom. */
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap'); */
 
 
 :root {
@@ -10,10 +7,9 @@
     --cor-destaque: #7f5af0;
     --cor-texto: #e0e0e0;
     --cor-texto-secundario: #a0a0a0;
-    --cor-texto-escuro: #121212; /* Adicionado para texto da face2 */
-    /* Cores do acordeão do vídeo (adaptei para combinar um pouco mais) */
-    --accordion-bg: #412868; /* Fundo do accordion no vídeo, adaptei para sua cor */
-    --accordion-item-bg: #1e1e1e; /* Fundo padrão do item do accordion */
+    --cor-texto-escuro: #121212;
+    --accordion-bg: #412868;
+    --accordion-item-bg: #1e1e1e;
 }
 
 * {
@@ -27,18 +23,18 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Mantenha sua fonte padrão */
+    font-family: 'Roboto', sans-serif;
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
 }
 
 section {
     padding: 100px 8%;
-    min-height: 100vh; /* Garante que cada seção ocupe no mínimo 100% da altura da viewport */
-    display: flex; /* Adicionado para flexibilidade de layout */
-    flex-direction: column; /* Organiza o conteúdo em coluna */
-    align-items: center; /* Centraliza horizontalmente */
-    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 header {
@@ -58,12 +54,10 @@ header {
     padding: 0.6rem 6%;
 }
 
-img.logo { /* Mais específico para a imagem da logo */
-    /* width: 250px; /* Removido para ser responsivo */
-    height: auto; /* Garante que a altura se ajuste à largura */
-    max-width: 250px; /* Garante que não exceda o tamanho original */
-    /* NOVO: Ajuste a largura da logo com clamp */
-    width: clamp(150px, 20vw, 250px); /* Ex: Mínimo 150px, ideal 20% da largura da tela, máximo 250px */
+img.logo { 
+    height: auto; 
+    max-width: 250px;
+    width: clamp(150px, 20vw, 250px);
 }
 .nav-menu {
     list-style: none;
@@ -134,7 +128,7 @@ img.logo { /* Mais específico para a imagem da logo */
     }
 
     .nav-item {
-        margin: 10px 0; /* Ajustado para espaçamento vertical */
+        margin: 10px 0;
     }
 
     .menu-toggle {
@@ -144,40 +138,29 @@ img.logo { /* Mais específico para a imagem da logo */
 
 
 #inicio {
-    /* Mantenha estas propriedades de layout */
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 4rem;
-
-    /* A cor de fundo de fallback é importante se o SVG não carregar */
     background-color: var(--cor-fundo);
-
-    /* Propriedades ESSENCIAIS para que o pseudoelemento ::before funcione como background */
-    position: relative; /* O pseudoelemento será posicionado em relação a esta seção */
-    overflow: hidden;   /* Ajuda a garantir que o pseudoelemento não vaze se for maior que a seção */
-    z-index: 1;         /* Garante que o conteúdo (texto, imagens) da seção fique acima do background */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 #inicio::before {
-    content: ''; /* Propriedade obrigatória para pseudoelementos */
-    position: absolute; /* Posiciona o pseudoelemento de forma absoluta dentro da seção pai */
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* Configurações da imagem SVG de fundo */
-    background-image: url('/asset/img/background.svg'); /* Substitua pelo caminho correto do seu SVG */
-    background-repeat: no-repeat; /* A imagem não se repete */
-    background-size: cover; /* A imagem cobre toda a área do pseudoelemento, mantendo a proporção */
-    background-position: center center; /* Centraliza a imagem de fundo */
-
-    z-index: -1; /* Coloca o pseudoelemento (com o SVG) atrás do conteúdo real da seção */
-
-    /* AQUI VOCÊ CONTROLA A OPACIDADE DO BACKGROUND SVG */
-    opacity: 5%; /* Ajuste este valor (entre 0 e 1) para controlar a "invisibilidade" da imagem */
-                  /* Quanto mais próximo de 0, mais sutil/invisível ela será. */
+    background-image: url('/asset/img/background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    z-index: -1;
+    opacity: 5%; 
 }
 
 .inicio-container {
@@ -196,7 +179,7 @@ img.logo { /* Mais específico para a imagem da logo */
 
 .inicio-image img {
     max-width: 100%;
-    height: auto; /* Garante que a imagem seja responsiva */
+    height: auto;
 }
 
 .inicio-content {
@@ -221,7 +204,7 @@ img.logo { /* Mais específico para a imagem da logo */
     color: var(--cor-texto);
 }
 
-.inicio-content ul { /* Adicionado estilo para a lista na seção de início */
+.inicio-content ul {
     font-size: 0.9rem; 
     line-height: 1.1;
     color: var(--cor-texto);
@@ -251,7 +234,6 @@ img.logo { /* Mais específico para a imagem da logo */
 }
 
 
-/* ----- ESTILOS DA SEÇÃO HABILIDADES (REPLICANDO O VÍDEO DE REFERÊNCIA) ----- */
 #habilidades {
     background-color: var(--cor-destaque);
 }
@@ -260,41 +242,37 @@ img.logo { /* Mais específico para a imagem da logo */
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap; /* Alterado para wrap para quebrar linha em telas menores */
+    flex-wrap: wrap;
     gap: 20px;
-    padding-top: 50px; /* Ajuste o padding superior */
+    padding-top: 50px;
     padding-bottom: 50px;
 }
 
-/* Adicionar uma regra específica para telas maiores que 768px (desktop) */
-@media (min-width: 769px) { /* Use 769px para começar logo após o mobile */
+@media (min-width: 769px) {
     .habilidades-container {
-        flex-wrap: nowrap; /* Impede a quebra de linha em desktop */
+        flex-wrap: nowrap; 
     }
 
-    /* Opcional: Ajustar o tamanho da fonte e ícones proporcionalmente */
     .card .face.face1 .content h3 {
-        font-size: clamp(1rem, 1.5vw, 1.5rem); /* Reduzirá a fonte em telas menores do desktop */
+        font-size: clamp(1rem, 1.5vw, 1.5rem);
     }
     .card .face.face1 .content img {
-        max-width: clamp(60px, 8vw, 80px); /* Reduzirá o ícone em telas menores do desktop */
+        max-width: clamp(60px, 8vw, 80px);
     }
     .card .face.face2 .content p {
-        font-size: clamp(0.8rem, 1.2vw, 1rem); /* Reduzirá o parágrafo em telas menores do desktop */
+        font-size: clamp(0.8rem, 1.2vw, 1rem);
     }
     .card .face.face2 .content a {
-        font-size: clamp(0.7rem, 1vw, 1rem); /* Reduzirá o link em telas menores do desktop */
-        padding: clamp(5px, 0.8vw, 8px) clamp(10px, 1.5vw, 15px); /* Reduzirá o padding do link */
+        font-size: clamp(0.7rem, 1vw, 1rem);
+        padding: clamp(5px, 0.8vw, 8px) clamp(10px, 1.5vw, 15px);
     }
 }
 
-/* Adicionar uma regra específica para telas maiores que Xpx (desktop) */
-@media (min-width: 1200px) { /* Ajuste este valor para o ponto onde todos os 6 cards cabem SEMPRE lado a lado */
+@media (min-width: 1200px) {
     .habilidades-container {
-        flex-wrap: nowrap; /* Impede a quebra de linha em desktop */
+        flex-wrap: nowrap;
     }
 
-    /* Os valores clamp() para fontes/ícones devem estar aqui para escalar se a tela encolher *dentro* do modo nowrap */
     .card .face.face1 .content h3 {
         font-size: clamp(1rem, 1.8vw, 1.5rem);
     }
@@ -311,13 +289,10 @@ img.logo { /* Mais específico para a imagem da logo */
 }
 
 
-/* Cor específica para o título "Minhas Habilidades" */
 .habilidades-titulo {
     color: #ffffff;
     padding-bottom: 10px;
-    /* NOVO: Ajuste o margin-bottom com clamp para ser responsivo */
-    /* clamp(min-value, ideal-value_in_vw, max-value) */
-    margin-bottom: clamp(50px, 8vw, 250px); /* Exemplo: Mínimo 50px, ideal 8% da largura da tela, máximo 250px */
+    margin-bottom: clamp(50px, 8vw, 250px);
     text-align: center;
     width: 100%;
 }
@@ -336,8 +311,8 @@ img.logo { /* Mais específico para a imagem da logo */
 
 .card:hover {
     box-shadow: 0 15px 30px rgba(127, 90, 240, 0.4);
-    overflow: visible; /* Adicione esta linha */
-    z-index: 10;        /* Adicione esta linha */
+    overflow: visible;
+    z-index: 10;    
 }
 .card .face {
     position: absolute;
@@ -349,20 +324,20 @@ img.logo { /* Mais específico para a imagem da logo */
     justify-content: center;
     align-items: center;
     text-align: center;
-    backface-visibility: hidden; /* Melhora a performance da animação */
+    backface-visibility: hidden;
     transition: transform 0.5s ease-in-out, background-color 0.5s ease;
 }
 
-/* Face 1: A camada de cima, que se move */
+
 .card .face.face1 {
     background-color: var(--cor-primaria);
     color: var(--cor-texto);
-    z-index: 2; /* Garante que esta face fique por cima */
+    z-index: 2;
     transform: translateY(0);
 }
 
 
-/* Ação de Hover no Card: Move a Face 1 para cima */
+
 .card:hover .face.face1 {
     transform: translateY(-100%);
     background-color:#121212;
@@ -399,7 +374,7 @@ img.logo { /* Mais específico para a imagem da logo */
     color: #fff;
 }
 
-/* Face 2: A camada de baixo, que é revelada e permanece estática */
+
 .card .face.face2 {
     background-color: #fff;
     color: var(--cor-texto-escuro);
@@ -409,51 +384,40 @@ img.logo { /* Mais específico para a imagem da logo */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* ESTA FACE NÃO POSSUI ANIMAÇÃO NO HOVER, POR ISSO FICA ESTÁTICA */
 }
 
 .card .face.face2 .content p {
     margin: 0;
     padding: 0;
-    /* Ajuste o clamp para permitir uma fonte menor e/ou mais responsiva */
-    font-size: clamp(0.4rem, 1.0vw, 0.8rem); /* Reduzindo o min-size (0.5rem) e o vw (1.5vw) */
+    font-size: clamp(0.4rem, 1.0vw, 0.8rem);
     color: var(--cor-texto-escuro);
     line-height: 1.4;
-
-    /* REMOVA OU COMENTE ESTAS LINHAS para que o texto possa ter mais linhas e se ajustar */
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
-    /* display: -webkit-box; */
-    /* -webkit-line-clamp: 3; */ /* Este é o que estava cortando */
-    /* -webkit-box-orient: vertical; */
-
     margin-bottom: 0.2rem;
 }
 
 .card .face.face2 .content a {
-    margin-top: auto; /* Isso é ótimo, pois empurra o botão para o final do flex container */
+    margin-top: auto;
     display: inline-block;
     text-decoration: none;
     font-weight: 900;
-    font-size: clamp(0.65rem, 0.8vw, 0.8rem); /* Já está com clamp, o que é bom */
+    font-size: clamp(0.65rem, 0.8vw, 0.8rem);
     color: var(--cor-destaque);
     padding: clamp(3px, 0.7vw, 4px);
     border: 1px solid var(--cor-destaque);
     border-radius: 1px;
     transition: 0.3s;
-    white-space: nowrap; /* Garante que o texto do botão não quebre linha */
+    white-space: nowrap;
 }
 
-/* VAMOS REVER O CONTÊINER PAI DESSES ELEMENTOS NA FACE2 */
 .card .face.face2 .content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* CRÍTICO: Distribui o espaço entre os itens (p e a) */
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    height: 100%; /* Garante que o conteúdo preencha a face */
-    padding: 3px; /* Padding interno para que o conteúdo não cole nas bordas do card */
-    box-sizing: border-box; /* Inclui padding na largura e altura total */
+    height: 100%;
+    padding: 3px;
+    box-sizing: border-box;
 }
 
 
@@ -462,7 +426,7 @@ img.logo { /* Mais específico para a imagem da logo */
     color: #fff;
 }
 
-/* Media Queries para a seção de Habilidades */
+
 @media (max-width: 768px) {
     .habilidades-container {
         gap: 30px;
@@ -494,11 +458,9 @@ img.logo { /* Mais específico para a imagem da logo */
     }
 }
 
-/* --- ESTILOS DO PORTFÓLIO (AGORA COMO ACORDEÃO) --- */
+
 #portfolio {
-    background-color: var(--cor-fundo); /* Mudado para cor-fundo para o acordeão */
-    
-    /* Mantido display: flex, flex-direction: column, align-items: center, justify-content: center do section geral */
+    background-color: var(--cor-fundo); 
 }
 
 #portfolio .section-title {
@@ -513,12 +475,12 @@ img.logo { /* Mais específico para a imagem da logo */
     width: 100%;
     display: flex;
     justify-content: center;
-    height: 400px; /* Ajuste conforme a altura que você deseja para os itens */
-    gap: 16px; /* Espaço entre os itens */
+    height: 400px;
+    gap: 16px;
     transition: 0.3s;
-    list-style: none; /* Remover marcadores de lista */
-    padding: 0; /* Remover padding padrão da lista */
-    max-width: 1200px; /* Limite a largura para melhor visualização */
+    list-style: none;
+    padding: 0;
+    max-width: 1200px;
 }
 
 .accordion-item {
@@ -530,21 +492,21 @@ img.logo { /* Mais específico para a imagem da logo */
     cursor: pointer;
     transition: flex 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 1; /* Adicionado para ordenar as camadas */
+    z-index: 1;
 }
 
-/* Efeito de z-index ao hover para garantir que o item expandido esteja acima */
+
 .accordion-item:hover {
     flex: 0 1 400px;
     opacity: 1;
     cursor: pointer;
     transform: scale(1.02);
-    z-index: 10;       /* Adicionado para sobrepor outros itens */
+    z-index: 10;
 }
 
 .accordion-item:not(:hover) {
-    z-index: 1; /* Volta ao z-index normal quando não está em hover */
-    transition: flex 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out, z-index 0.01s ease 0.5s; /* Adicionado delay no z-index */
+    z-index: 1;
+    transition: flex 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out, z-index 0.01s ease 0.5s;
 }
 
 
@@ -553,11 +515,11 @@ img.logo { /* Mais específico para a imagem da logo */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;   /* GARANTE que a imagem ocupe a largura total do item */
-    height: 100%;  /* GARANTE que a imagem ocupe a altura total do item */
-    object-fit: cover; /* Faz a imagem cobrir a área, cortando se necessário */
-    object-position: center; /* Centraliza a imagem dentro da área */
-    filter: grayscale(0.5) blur(2px); /* Efeito de cinza e leve desfoque na imagem "fechada" */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(0.5) blur(2px);
     transition: 0.5s;
 }
 
@@ -570,68 +532,66 @@ img.logo { /* Mais específico para a imagem da logo */
     z-index: 1;
     color: #fff;
     padding: 15px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%); /* Cor de fundo mais escura */
-    opacity: 0; /* Conteúdo oculto inicialmente */
-    visibility: hidden; /* Oculta o conteúdo completamente */
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0;
+    visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Alinha o conteúdo ao final da div */
-    align-items: center; /* Centraliza horizontalmente */
+    justify-content: flex-end;
+    align-items: center;
     text-align: center;
-    padding-bottom: 25px; /* Mais espaço para o botão e texto */
+    padding-bottom: 25px;
 }
 
 .accordion-item .content span {
-    position: relative; /* Mantido para o botão ficar dentro e ser posicionado */
-    transform: scale(0.85); /* Escala menor inicialmente */
+    position: relative;
+    transform: scale(0.85);
     visibility: hidden;
     opacity: 0;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     text-align: center;
-    width: 100%; /* Garante que o span ocupe a largura do pai */
-    padding: 0 20px; /* Adiciona um padding horizontal */
-    box-sizing: border-box; /* Inclui padding na largura total */
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Espaço entre os elementos dentro do span */
+    gap: 10px;
 }
 
 .accordion-item .content h2 {
     font-weight: 400;
     font-size: 24px;
-    line-height: 1.2em; /* Ajuste o line-height para texto em várias linhas */
+    line-height: 1.2em;
     border-bottom: 2px solid #fff;
-    padding-bottom: 5px; /* Espaço entre texto e linha */
+    padding-bottom: 5px;
     margin-bottom: 10px;
-    white-space: normal; /* PERMITE QUE O TEXTO QUEBRE LINHA */
+    white-space: normal;
     overflow: hidden;
-    text-overflow: ellipsis; /* Para adicionar '...' se o texto for muito longo e quebrar linha */
-    max-width: 100%; /* Garante que não ultrapasse a largura do pai */
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .accordion-item .content p {
     font-size: 16px;
-    margin-bottom: 15px; /* Espaço entre as tags e o botão */
-    white-space: normal; /* PERMITE QUE O TEXTO QUEBRE LINHA */
+    margin-bottom: 15px;
+    white-space: normal;
     overflow: hidden;
-    text-overflow: ellipsis; /* Para adicionar '...' se o texto for muito longo e quebrar linha */
+    text-overflow: ellipsis;
     max-width: 100%;
 }
 
-
-/* O item específico que está em hover se expande */
 .accordion-item:hover {
-    flex: 0 1 400px; /* O item hover se expande para 400px (largura desejada) */
+    flex: 0 1 400px;
     opacity: 1;
     cursor: pointer;
-    transform: scale(1.02); /* Pequeno zoom no item ativo */
+    transform: scale(1.02);
 }
 
 .accordion-item:hover img {
-    filter: grayscale(0) blur(0); /* Remove o filtro de cinza e o desfoque */
+    filter: grayscale(0) blur(0);
 }
 
 .accordion-item:hover .content {
@@ -642,10 +602,9 @@ img.logo { /* Mais específico para a imagem da logo */
 .accordion-item:hover .content span {
     opacity: 1;
     visibility: visible;
-    transform: scale(1); /* Volta à escala normal */
+    transform: scale(1);
 }
 
-/* Estilos para o botão "Veja Mais" */
 .btn-more-details {
     background-color: var(--cor-destaque);
     color: #fff;
@@ -655,7 +614,7 @@ img.logo { /* Mais específico para a imagem da logo */
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0; /* Oculto inicialmente */
+    opacity: 0;
     visibility: hidden;
 }
 
@@ -666,52 +625,51 @@ img.logo { /* Mais específico para a imagem da logo */
 
 .btn-more-details:hover {
     background-color: #6a44d3;
-    transform: scale(1.05); /* Mantido para um pequeno zoom local no botão */
+    transform: scale(1.05);
 }
 
 
-/* Media Queries para o acordeão em telas menores */
 @media (max-width: 1024px) {
     .accordion {
-        flex-direction: column; /* Empilha os itens verticalmente */
-        height: auto; /* Altura automática para se adaptar ao conteúdo */
+        flex-direction: column;
+        height: auto;
         gap: 10px;
-        padding-top: 20px; /* Ajuste o padding superior */
+        padding-top: 20px;
     }
 
     .accordion-item {
-        flex: 0 0 auto; /* Remove a largura inicial fixa */
-        width: 100%; /* Ocupa a largura total */
-        height: 200px; /* Altura padrão para itens não hover */
-        border-radius: 20px; /* Ajuste o arredondamento */
+        flex: 0 0 auto;
+        width: 100%;
+        height: 200px;
+        border-radius: 20px;
     }
 
     .accordion-item:hover {
-        flex: 0 0 auto; /* Mantém auto no hover */
-        height: 250px; /* Altura expandida no hover */
+        flex: 0 0 auto;
+        height: 250px;
     }
 
     .accordion-item .content {
-        padding-bottom: 20px; /* Reduz padding em mobile */
+        padding-bottom: 20px;
     }
 
     .accordion-item .content span {
-        transform: scale(1); /* Mantém escala normal em mobile */
-        position: relative; /* Mantenha para o botão */
+        transform: scale(1);
+        position: relative;
     }
 
     .btn-more-details {
-        transform: none; /* Remove transform X para mobile */
+        transform: none;
     }
 
     .accordion-item:hover .btn-more-details {
-        transform: none; /* Remove o efeito de deslizar para cima no hover em mobile */
+        transform: none;
     }
 }
 
 @media (max-width: 768px) {
     .accordion-item {
-        height: 180px; /* Altura menor para telas muito pequenas */
+        height: 180px;
     }
     .accordion-item:hover {
         height: 220px;
@@ -747,7 +705,6 @@ img.logo { /* Mais específico para a imagem da logo */
 }
 
 
-/* --- ESTILOS DO MODAL --- */
 .modal-container {
     position: fixed;
     top: 0;
@@ -831,7 +788,7 @@ img.logo { /* Mais específico para a imagem da logo */
     margin-bottom: 2rem;
 }
 
-/* --- ESTILOS DE CONTATO --- */
+
 #contato {
     display: flex;
     flex-direction: column;
@@ -892,7 +849,7 @@ img.logo { /* Mais específico para a imagem da logo */
     cursor: pointer;
 }
 
-/* --- ESTILOS DO FOOTER --- */
+
 footer {
     display: flex;
     justify-content: space-between;
@@ -918,8 +875,8 @@ footer {
 
 
 .footer-logo img {
-    max-width: 100px; /* Ajuste a largura máxima da logo no footer */
-    height: auto; /* Garante que a altura se ajuste à largura */
+    max-width: 100px;
+    height: auto;
 }
 
 .footer-copyright p {
@@ -938,7 +895,7 @@ footer {
     color: var(--cor-destaque);
 }
 
-/* Animações de Scroll */
+
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -950,7 +907,7 @@ footer {
     transform: translateY(0);
 }
 
-/* Media Queries Gerais */
+
 @media (max-width: 1024px) {
     .inicio-container {
         flex-direction: column;
