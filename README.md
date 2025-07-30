@@ -1,4 +1,4 @@
-<h1 align="center">✨ Landing Page - José Victor | Engenheiro de Dados ✨</h1>
+<h1 align="center"> Landing Page - José Victor | Engenheiro de Dados </h1>
 <p align="center">Um portfólio profissional moderno e responsivo para José Victor, Engenheiro de Dados</p>
 
 <div align="center">
