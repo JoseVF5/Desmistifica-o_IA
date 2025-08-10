@@ -90,16 +90,26 @@ O projeto possui um design moderno e elegante, com o logotipo JV em várias vers
 * **Font Awesome:** Para ícones de redes sociais.
 * **Formspree:** (Placeholder em `index.html`) Para lidar com envios de formulários.
 
-* ## Como Usar
-1.  Clone o repositório:
-    ```bash
-    git clone [https://github.com/amaro-netto/JV_SitePortifolio.git](https://github.com/amaro-netto/JV_SitePortifolio.git)
-    ```
-2.  Navegue até o diretório:
-    ```bash
-    cd JV_SitePortifolio
-    ```
-3.  Abra o arquivo `index.html` em seu navegador web.
+* ## Imagens
+
+# Desktop:
+
+<img alt="screencapture-josevictor-de-netlify-app-2025-08-10-13_36_27" src="https://github.com/user-attachments/assets/8ed2fbf8-7037-4170-8f69-8ca915bb9654" />
+
+<img alt="Captura de tela 2025-08-10 134511" src="https://github.com/user-attachments/assets/acbcc229-d44c-46dc-ae06-336072bcb660" />
+
+<img alt="Captura de tela 2025-08-10 134539" src="https://github.com/user-attachments/assets/958d5ab1-56eb-43f9-b75e-f370b3787a58" />
+
+<img alt="Captura de tela 2025-08-10 134555" src="https://github.com/user-attachments/assets/713819ec-7748-4b5f-b1c1-474da0cd1f2a" />
+
+# Mobile:
+
+<img alt="screencapture-josevictor-de-netlify-app-2025-08-10-13_46_37" src="https://github.com/user-attachments/assets/64f5ea24-0459-4c9c-92a0-06d564514a5d" />
+<img alt="Captura de tela 2025-08-10 134718" src="https://github.com/user-attachments/assets/21c2c976-3ea3-46c0-af9a-7d846ea34445" /> <img alt="Captura de tela 2025-08-10 134755" src="https://github.com/user-attachments/assets/f74c9a6d-ca17-4c21-ae94-fe5fa65b8845" />
+
+
+
+
 
    ## Estrutura do Projeto
    
