@@ -105,7 +105,8 @@ O projeto possui um design moderno e elegante, com o logotipo JV em várias vers
 # Mobile:
 
 <img alt="screencapture-josevictor-de-netlify-app-2025-08-10-13_46_37" src="https://github.com/user-attachments/assets/64f5ea24-0459-4c9c-92a0-06d564514a5d" />
-<img alt="Captura de tela 2025-08-10 134718" src="https://github.com/user-attachments/assets/21c2c976-3ea3-46c0-af9a-7d846ea34445" /> <img alt="Captura de tela 2025-08-10 134755" src="https://github.com/user-attachments/assets/f74c9a6d-ca17-4c21-ae94-fe5fa65b8845" />
+
+<img alt="Captura de tela 2025-08-10 134718" src="https://github.com/user-attachments/assets/21c2c976-3ea3-46c0-af9a-7d846ea34445" /><img alt="Captura de tela 2025-08-10 134755" src="https://github.com/user-attachments/assets/f74c9a6d-ca17-4c21-ae94-fe5fa65b8845" />
 
 
 
@@ -138,9 +139,9 @@ O projeto possui um design moderno e elegante, com o logotipo JV em várias vers
 └── style.css
 ```
 
-## Pessoas Desenvolvedoras do Projeto
+## Equipe do Projeto:
 
-* [Amaro Netto](https://github.com/amaro-netto) - Desenvolvedor principal
+<a href="https://github.com/amaro-netto" title="Amaro Netto"><img width="180" src="https://github.com/user-attachments/assets/95fc365b-d812-4027-820c-e39acd18ec05"/></a>
 
 ## Licença
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
