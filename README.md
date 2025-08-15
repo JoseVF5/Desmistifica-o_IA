@@ -22,9 +22,8 @@
 - [Funcionalidades](#funcionalidades)
 - [Layout e Design](#layout-e-design)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Como Usar](#como-usar)
 - [Estrutura do Projeto](#estrutura-do-projeto)
-- [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras-do-projeto)
+- [Equipe do Projeto](#equipe-do-projeto)
 - [Licença](#licença)
 
 ## Descrição do Projeto
@@ -139,9 +138,10 @@ O projeto possui um design moderno e elegante, com o logotipo JV em várias vers
 └── style.css
 ```
 
-## Equipe do Projeto:
+## Equipe do Projeto
 
-<a href="https://github.com/amaro-netto" title="Amaro Netto"><img width="180" src="https://github.com/user-attachments/assets/95fc365b-d812-4027-820c-e39acd18ec05"/></a>
+<a href="https://github.com/amaro-netto" title="Amaro Netto"><img width="180" src="https://github.com/user-attachments/assets/b7a3a1bf-304a-4974-b75f-1d620ad6ecf1"/></a>
+
 
 ## Licença
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
