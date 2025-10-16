@@ -333,13 +333,13 @@ img.logo {
     background-color: var(--cor-primaria);
     color: var(--cor-texto);
     z-index: 2;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 
 
 .card:hover .face.face1 {
-    transform: translateY(-100%);
+    transform: translateX(-150%);
     background-color:#121212;
 }
 
