@@ -1,5 +1,5 @@
-<h1 align="center"> Landing Page - José Victor | Engenheiro de Dados </h1>
-<p align="center">Um portfólio profissional moderno e responsivo para José Victor, Engenheiro de Dados</p>
+<h1 align="center"> Landing Page - Desmistificando a Inteligência Artificial </h1>
+<p align="center">Um projeto focado na desmistificação da inteligência artificial pensando em jovens no começo de carreira/aprendizado na área de TI</p>
 
 <div align="center">
 <img src="https://github.com/amaro-netto/JV_SitePortifolio/blob/main/asset/img/LOGO%20JV_White%20Horizontal.svg" alt="logo" width="700">
@@ -19,30 +19,16 @@
 ## Índice
 - [Descrição do Projeto](#descrição-do-projeto)
 - [Status do Projeto](#status-do-projeto)
-- [Funcionalidades](#funcionalidades)
 - [Layout e Design](#layout-e-design)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Estrutura do Projeto](#estrutura-do-projeto)
-- [Equipe do Projeto](#equipe-do-projeto)
 - [Licença](#licença)
 
 ## Descrição do Projeto
-Um portfólio profissional e moderno para José Victor, um Engenheiro de Dados Júnior. Este projeto serve como uma landing page pessoal para apresentar suas habilidades, projetos e informações de contato de forma clara e acessível. O objetivo é destacar a paixão de José Victor pela Engenharia de Dados, Big Data e algoritmos.
+m projeto focado na desmistificação da inteligência artificial pensando em jovens no começo de carreira/aprendizado na área de TI. Este projeto serve como uma landing page para apresentação do conteúdo nele contindo aos jovens do curso de Robótica da escola pública xxxxxx. O objetivo é deixar de forma mais clara e sucinta possível o que é IA, um pouco da sua história, valor no mercado de trabalho e exemplos do seu uso no cotidiano.
 
 ## Status do Projeto
 🟢 **Concluído**
-
-## Funcionalidades
-* **Seção Início:** Apresenta José Victor, sua formação em Engenharia de Software e sua paixão por Engenharia de Dados.
-    * Inclui uma chamada proeminente para ação para visualizar seus projetos.
-* **Seção Habilidades:** Destaca as proficiências técnicas de José Victor com cartões interativos. Cada cartão exibe um ícone, nome da habilidade, uma breve descrição e um link "Saiba Mais".
-* **Seção Portfólio:** Apresenta os projetos de José Victor usando um layout estilo acordeão interativo.
-    * Clicar em um cartão de projeto abre um modal com mais detalhes, incluindo título, tags, uma descrição detalhada, uma imagem e um link para o repositório do GitHub.
-* **Seção Contato:** Fornece um formulário para que os visitantes possam entrar em contato com José Victor.
-* **Design Responsivo:** O layout se adapta a vários tamanhos de tela, garantindo uma experiência de usuário consistente.
-* **Animações:** Animações sutis acionadas por rolagem aprimoram o apelo visual e o engajamento do usuário.
-* **Menu Hambúrguer:** Um menu de navegação responsivo para telas menores.
-* **Navegação Suave:** Permite rolagem suave entre as seções da página.
 
 ## Layout e Design
 
@@ -85,28 +71,9 @@ O projeto possui um design moderno e elegante, com o logotipo JV em várias vers
     * Animações de rolagem (`IntersectionObserver`).
     * Funcionalidade do menu hambúrguer.
     * Lógica do modal de portfólio (abertura, preenchimento e fechamento).
-* **SVG (Scalable Vector Graphics):** Utilizado para ícones (Python, PySpark, MySQL, Numpy, Docker, Git) e padrões de fundo, garantindo alta qualidade visual.
+* **SVG (Scalable Vector Graphics):** Utilizado para ícones e padrões de fundo, garantindo alta qualidade visual.
 * **Font Awesome:** Para ícones de redes sociais.
 * **Formspree:** (Placeholder em `index.html`) Para lidar com envios de formulários.
-
-* ## Imagens
-
-# Desktop:
-
-<img alt="screencapture-josevictor-de-netlify-app-2025-08-10-13_36_27" src="https://github.com/user-attachments/assets/8ed2fbf8-7037-4170-8f69-8ca915bb9654" />
-
-<img alt="Captura de tela 2025-08-10 134511" src="https://github.com/user-attachments/assets/acbcc229-d44c-46dc-ae06-336072bcb660" />
-
-<img alt="Captura de tela 2025-08-10 134539" src="https://github.com/user-attachments/assets/958d5ab1-56eb-43f9-b75e-f370b3787a58" />
-
-<img alt="Captura de tela 2025-08-10 134555" src="https://github.com/user-attachments/assets/713819ec-7748-4b5f-b1c1-474da0cd1f2a" />
-
-# Mobile:
-
-<img alt="screencapture-josevictor-de-netlify-app-2025-08-10-13_46_37" src="https://github.com/user-attachments/assets/64f5ea24-0459-4c9c-92a0-06d564514a5d" />
-
-<img alt="Captura de tela 2025-08-10 134718" src="https://github.com/user-attachments/assets/21c2c976-3ea3-46c0-af9a-7d846ea34445" /><img alt="Captura de tela 2025-08-10 134755" src="https://github.com/user-attachments/assets/f74c9a6d-ca17-4c21-ae94-fe5fa65b8845" />
-
 
 ## Estrutura do Projeto
    
@@ -134,11 +101,5 @@ O projeto possui um design moderno e elegante, com o logotipo JV em várias vers
 ├── index.html
 └── style.css
 ```
-
-## Equipe do Projeto
-
-<a href="https://github.com/amaro-netto" title="Amaro Netto"><img width="180" src="https://github.com/user-attachments/assets/b7a3a1bf-304a-4974-b75f-1d620ad6ecf1"/></a>
-
-
 ## Licença
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
